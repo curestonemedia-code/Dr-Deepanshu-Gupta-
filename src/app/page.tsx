@@ -1,8 +1,7 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, Suspense } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import * as Icons from 'lucide-react';
 import LiveOTSection from '../components/LiveOTSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FAQSection from '../components/FAQSection';
@@ -12,6 +11,7 @@ import CarePathwaySection from '../components/CarePathwaySection';
 import ZoomSceneSection from '../components/ZoomSceneSection';
 import DoctorProfileSection from '../components/DoctorProfileSection';
 import ExperienceAndMemberships from '../components/ExperienceAndMemberships';
+import BookingForm from '../components/BookingForm';
 import { wrapWords } from '../utils/text';
 
 export default function Home() {
@@ -122,91 +122,6 @@ export default function Home() {
 
         });
 
-
-
-        /* ── Booking form multi-step ── */
-        const steps = document.querySelectorAll<HTMLElement>('.booking-step');
-        const dots = document.querySelectorAll<HTMLElement>('.booking-step-dot');
-        let currentStep = 0;
-        let selectedCondition = '';
-        let selectedSlot = '';
-
-        function goToStep(n: number) {
-            steps.forEach((s, i) => s.classList.toggle('active', i === n));
-            dots.forEach((d, i) => {
-                d.classList.toggle('active', i <= n);
-            });
-            currentStep = n;
-        }
-
-        // Condition picks
-        document.querySelectorAll('.cond-pick').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.cond-pick').forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                selectedCondition = (btn as HTMLElement).dataset.value || '';
-            });
-        });
-
-        // Slot picks
-        document.querySelectorAll('.slot').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.slot').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                selectedSlot = (btn as HTMLElement).dataset.value || '';
-            });
-        });
-
-        // Next buttons
-        document.querySelectorAll('[data-next]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentStep === 0 && !selectedCondition) {
-                    const errEl = steps[0].querySelector('.field-error');
-                    if (errEl) errEl.textContent = 'Please select a condition to continue.';
-                    return;
-                }
-                if (currentStep === 1) {
-                    const dateInput = document.getElementById('bk-date') as HTMLInputElement;
-                    if (!dateInput?.value) {
-                        const errEl = steps[1].querySelector('.field-error');
-                        if (errEl) errEl.textContent = 'Please pick a date.';
-                        return;
-                    }
-                    if (!selectedSlot) {
-                        const errEl = steps[1].querySelector('.field-error');
-                        if (errEl) errEl.textContent = 'Please select a time slot.';
-                        return;
-                    }
-                }
-                // Clear errors
-                steps[currentStep].querySelector('.field-error')!.textContent = '';
-                goToStep(currentStep + 1);
-            });
-        });
-
-        // Back buttons
-        document.querySelectorAll('[data-prev]').forEach(btn => {
-            btn.addEventListener('click', () => goToStep(currentStep - 1));
-        });
-
-        // Submit
-        const submitBtn = document.getElementById('bk-submit');
-        submitBtn?.addEventListener('click', () => {
-            const name = (document.getElementById('bk-name') as HTMLInputElement)?.value.trim();
-            const phone = (document.getElementById('bk-phone') as HTMLInputElement)?.value.trim();
-            const errEl = steps[2].querySelector('.field-error');
-            if (!name || !phone) {
-                if (errEl) errEl.textContent = 'Name and phone number are required.';
-                return;
-            }
-            if (errEl) errEl.textContent = '';
-            // Show success
-            document.querySelector('.booking-form')?.classList.add('hidden');
-            document.querySelector('.booking-success')?.classList.add('visible');
-            const refEl = document.getElementById('bk-ref');
-            if (refEl) refEl.textContent = 'REF-' + Math.random().toString(36).substring(2, 8).toUpperCase();
-        });
-
         return () => {
             // kill(true) physically removes GSAP pin-spacer divs from the DOM
             // BEFORE React runs its removeChild during reconciliation.
@@ -229,22 +144,6 @@ export default function Home() {
                 .faq-toggle { transition: transform 0.3s ease; }
                 .faq-toggle.rotated { transform: rotate(45deg); }
 
-                /* Booking steps */
-                .booking-step { display: none; }
-                .booking-step.active { display: block; }
-                .booking-form.hidden { display: none; }
-                .booking-success { display: none; }
-                .booking-success.visible { display: block; }
-                .booking-step-dot { transition: background 0.3s, transform 0.3s; }
-                .booking-step-dot.active { background: var(--brand, #2563eb); transform: scale(1.2); }
-
-                /* Slot active */
-                .slot.active { background: var(--brand, #2563eb) !important; color: #fff !important; border-color: var(--brand, #2563eb) !important; }
-
-                /* Condition pick selected */
-                .cond-pick.selected { border-color: var(--brand, #2563eb) !important; background: rgba(37,99,235,0.06) !important; }
-                .cond-pick.selected .cp-title { color: var(--brand, #2563eb); }
-
                 /* Video card */
                 .video-card { cursor: pointer; }
 
@@ -263,9 +162,6 @@ export default function Home() {
                 .reveal-mask { overflow: hidden; }
 
                 /* Smooth scroll (handled by Lenis) */
-
-                /* Field error */
-                .field-error { color: #ef4444; font-size: 0.8rem; min-height: 1.2em; margin-top: 0.25rem; }
 
                 /* Pathway card initial for gsap */
                 .pathway-card { opacity: 0; }
@@ -354,106 +250,10 @@ export default function Home() {
                         <p className="body-lg mt-6">Same-day WhatsApp responses · Cashless insurance supported · Telemedicine available for remote patients.</p>
                     </div>
 
-                    <div id="booking" className="booking-wrap">
-                        <div className="booking-steps">
-                            <div className="booking-step-dot active"></div>
-                            <div className="booking-step-dot"></div>
-                            <div className="booking-step-dot"></div>
-                        </div>
-
-                        <div className="booking-form">
-                            {/* STEP 1 */}
-                            <div className="booking-step active" data-step="1">
-                                <div className="eyebrow" style={{ color: 'var(--brand)', marginBottom: '0.75rem' }}>STEP 1 OF 3</div>
-                                <h3 className="heading mb-2">What brings you here?</h3>
-                                <p className="body-sm mb-6">Choose the area most relevant to your concern.</p>
-                                <div className="cond-chip-grid">
-                                    {[
-                                        { val: 'kidney-stones', title: 'Kidney Stones', sub: 'RIRS, PCNL, laser removal' },
-                                        { val: 'prostate', title: 'Prostate / BPH', sub: 'HoLEP, laser enucleation' },
-                                        { val: 'infertility', title: 'Male Fertility', sub: 'Varicocele, hormonal, micro-TESE' },
-                                        { val: 'other', title: 'General Urology', sub: 'Other concerns, second opinion' },
-                                    ].map(({ val, title, sub }) => (
-                                        <button key={val} className="cond-pick" data-value={val}>
-                                            <div className="cp-title">{title}</div>
-                                            <div className="cp-sub">{sub}</div>
-                                        </button>
-                                    ))}
-                                </div>
-                                <div className="field-error"></div>
-                                <div className="booking-actions">
-                                    <div></div>
-                                    <button className="btn btn-primary" data-next>Continue <Icons.ArrowRight style={{ width: '16px', height: '16px' }} /></button>
-                                </div>
-                            </div>
-
-                            {/* STEP 2 */}
-                            <div className="booking-step" data-step="2">
-                                <div className="eyebrow" style={{ color: 'var(--brand)', marginBottom: '0.75rem' }}>STEP 2 OF 3</div>
-                                <h3 className="heading mb-2">Pick a date and time.</h3>
-                                <p className="body-sm mb-6">Consultations available Monday to Saturday at CureStone Hospital, Sector 46 Gurugram.</p>
-                                <div className="mb-5">
-                                    <label className="field-label" htmlFor="bk-date">Preferred date</label>
-                                    <input type="date" id="bk-date" className="field-input" />
-                                </div>
-                                <div className="mb-2">
-                                    <label className="field-label">Time slot</label>
-                                    <div className="slot-grid">
-                                        {[['10:00', '10:00 AM'], ['11:00', '11:00 AM'], ['12:00', '12:00 PM'], ['16:00', '4:00 PM'], ['17:00', '5:00 PM'], ['18:00', '6:00 PM']].map(([v, l]) => (
-                                            <button key={v} className="slot" data-value={v}>{l}</button>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="field-error"></div>
-                                <div className="booking-actions">
-                                    <button className="btn btn-ghost" data-prev><Icons.ArrowLeft style={{ width: '16px', height: '16px' }} /> Back</button>
-                                    <button className="btn btn-primary" data-next>Continue <Icons.ArrowRight style={{ width: '16px', height: '16px' }} /></button>
-                                </div>
-                            </div>
-
-                            {/* STEP 3 */}
-                            <div className="booking-step" data-step="3">
-                                <div className="eyebrow" style={{ color: 'var(--brand)', marginBottom: '0.75rem' }}>STEP 3 OF 3</div>
-                                <h3 className="heading mb-2">Your details.</h3>
-                                <p className="body-sm mb-6">We&apos;ll confirm on WhatsApp within the hour. No charges for first-time consultation enquiries.</p>
-                                <div className="grid md:grid-cols-2 gap-4 mb-4">
-                                    <div>
-                                        <label className="field-label" htmlFor="bk-name">Full name*</label>
-                                        <input type="text" id="bk-name" className="field-input" placeholder="e.g. Rajesh Kumar" />
-                                    </div>
-                                    <div>
-                                        <label className="field-label" htmlFor="bk-phone">Phone (WhatsApp)*</label>
-                                        <input type="tel" id="bk-phone" className="field-input" placeholder="+91 98xxx xxxxx" />
-                                    </div>
-                                </div>
-                                <div className="mb-4">
-                                    <label className="field-label" htmlFor="bk-email">Email (optional)</label>
-                                    <input type="email" id="bk-email" className="field-input" placeholder="you@example.com" />
-                                </div>
-                                <div className="mb-2">
-                                    <label className="field-label" htmlFor="bk-note">A brief note about your concern (optional)</label>
-                                    <textarea id="bk-note" className="field-textarea" placeholder="e.g. Detected 14mm kidney stone in CT last week, looking for a second opinion..."></textarea>
-                                </div>
-                                <div className="field-error"></div>
-                                <div className="booking-actions">
-                                    <button className="btn btn-ghost" data-prev><Icons.ArrowLeft style={{ width: '16px', height: '16px' }} /> Back</button>
-                                    <button className="btn btn-primary" id="bk-submit">Confirm Booking <Icons.Check style={{ width: '16px', height: '16px' }} /></button>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* SUCCESS */}
-                        <div className="booking-success">
-                            <div className="check-anim"><Icons.Check style={{ width: '32px', height: '32px', strokeWidth: 3 }} /></div>
-                            <h3 className="heading mb-3">Booking received.</h3>
-                            <p className="body-lg mb-6 max-w-md mx-auto">Your reference is <strong id="bk-ref" style={{ color: 'var(--brand)' }}>—</strong>. We&apos;ll WhatsApp you a confirmation within the hour.</p>
-                            <div className="flex flex-wrap items-center justify-center gap-3">
-                                <a href="https://wa.me/918800263884" className="btn btn-primary">
-                                    <Icons.MessageCircle style={{ width: '16px', height: '16px' }} />Open WhatsApp
-                                </a>
-                                <a href="/" className="btn btn-ghost">Back to home</a>
-                            </div>
-                        </div>
+                    <div className="max-w-2xl mx-auto">
+                        <Suspense fallback={<div className="h-96 rounded-[2.5rem] bg-slate-50 animate-pulse" />}>
+                            <BookingForm />
+                        </Suspense>
                     </div>
 
                     <p className="body-sm text-center mt-6 max-w-xl mx-auto">

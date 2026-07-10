@@ -46,10 +46,11 @@ export default function ExperienceAndMemberships() {
 
     const experiences = [
         {
-            src: 'https://thecurestone.com/wp-content/uploads/2021/05/PNG-Black-e1664728676618.png',
+            src: 'https://thecurestone.com/PNG-Black-e1664728676618.png',
             title: 'Chief Urologist & Founder',
-            location: 'CureStone Hospital, Gurugram',
-            alt: 'CureStone Hospital'
+            location: 'Cure Stone Hospital, Gurugram',
+            alt: 'Cure Stone Hospital',
+            href: 'https://thecurestone.com'
         },
         {
             src: 'data:image/png;base64,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',
@@ -121,27 +122,34 @@ export default function ExperienceAndMemberships() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {experiences.map((exp, i) => (
-                        <div key={i} className="exp-card bg-white border border-slate-100 p-8 rounded-3xl text-center shadow-sm hover:shadow-md hover:border-blue-100 transition-all flex flex-col items-center">
-                            <div className="w-24 h-24 bg-blue-50/50 rounded-2xl flex items-center justify-center mx-auto mb-6 p-2">
-                                <img
-                                    src={exp.src}
-                                    alt={exp.alt}
-                                    className="max-h-full max-w-full object-contain mix-blend-multiply"
-                                    onError={(e) => {
-                                        e.currentTarget.style.display = 'none';
-                                        e.currentTarget.parentElement!.innerHTML = `<span class="text-[10px] font-bold text-blue-600 leading-tight uppercase px-1">${exp.alt}</span>`;
-                                    }}
-                                />
-                            </div>
-                            <p className="text-[15px] font-bold text-slate-900 leading-tight mb-2">
-                                {exp.title}
-                            </p>
-                            <p className="text-xs font-semibold text-slate-500 leading-relaxed">
-                                {exp.location}
-                            </p>
-                        </div>
-                    ))}
+                    {experiences.map((exp, i) => {
+                        const CardTag = exp.href ? 'a' : 'div';
+                        return (
+                            <CardTag
+                                key={i}
+                                {...(exp.href ? { href: exp.href, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                className="exp-card bg-white border border-slate-100 p-8 rounded-3xl text-center shadow-sm hover:shadow-md hover:border-blue-100 transition-all flex flex-col items-center"
+                            >
+                                <div className="w-24 h-24 bg-blue-50/50 rounded-2xl flex items-center justify-center mx-auto mb-6 p-2">
+                                    <img
+                                        src={exp.src}
+                                        alt={exp.alt}
+                                        className="max-h-full max-w-full object-contain mix-blend-multiply"
+                                        onError={(e) => {
+                                            e.currentTarget.style.display = 'none';
+                                            e.currentTarget.parentElement!.innerHTML = `<span class="text-[10px] font-bold text-blue-600 leading-tight uppercase px-1">${exp.alt}</span>`;
+                                        }}
+                                    />
+                                </div>
+                                <p className="text-[15px] font-bold text-slate-900 leading-tight mb-2">
+                                    {exp.title}
+                                </p>
+                                <p className="text-xs font-semibold text-slate-500 leading-relaxed">
+                                    {exp.location}
+                                </p>
+                            </CardTag>
+                        );
+                    })}
                 </div>
             </div>
 

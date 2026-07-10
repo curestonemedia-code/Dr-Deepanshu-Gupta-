@@ -46,8 +46,8 @@ export default function DoctorProfileSection() {
     const achievements = [
         {
             icon: Award,
-            text: "1st Ever to start Fans-RIRS in North India.",
-            subtext: "By - Dr. Deepanshu Gupta"
+            text: "Experienced in FANS-RIRS Laser Surgery",
+            subtext: "Advanced kidney stone care at Cure Stone Hospital"
         },
         {
             icon: GraduationCap,
@@ -56,8 +56,8 @@ export default function DoctorProfileSection() {
         },
         {
             icon: ShieldCheck,
-            text: "Pioneer of Fans-RIRS in North India",
-            subtext: "Leading North India's first Fluoroscopy-free (Radiation-free) laser program."
+            text: "Fluoroscopy-Free RIRS Approach",
+            subtext: "Designed to reduce radiation exposure during selected procedures."
         },
         {
             icon: Star,
@@ -83,7 +83,7 @@ export default function DoctorProfileSection() {
                         <span className="text-blue-600">Dr. Deepanshu Gupta</span>
                     </h2>
                     <p className="body-lg text-slate-600 max-w-2xl mx-auto">
-                        Combining 15+ years of clinical excellence with the world's most advanced laser technologies for kidney stone treatment.
+                        Combining 15+ years of clinical experience with advanced laser technologies for kidney stone treatment.
                     </p>
                 </div>
 
@@ -128,7 +128,7 @@ export default function DoctorProfileSection() {
                                 </div>
                                 <div>
                                     <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.15em]">Primary Clinic Location</p>
-                                    <p className="text-sm font-bold text-slate-800 mt-1">Gurugram & Delhi NCR Hubs</p>
+                                    <p className="text-sm font-bold text-slate-800 mt-1">Cure Stone Hospital, Sector 52, Gurugram</p>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +147,7 @@ export default function DoctorProfileSection() {
                                 Expert Overview
                             </h4>
                             <p className="text-lg text-slate-600 leading-relaxed font-medium">
-                                Dr. Deepanshu Gupta is one of North India's most trusted urologists — renowned for his precision surgeries and compassionate approach. He <strong className="text-blue-700 font-extrabold uppercase">pioneered Fluoroscopy-free Fans-RIRS in North India</strong>, enabling kidney stone treatment without a single cut, scar, or harmful radiation exposure.
+                                Dr. Deepanshu Gupta is an experienced urologist known for precision-led care and a compassionate approach. His work includes <strong className="text-blue-700 font-extrabold uppercase">fluoroscopy-free FANS-RIRS laser surgery</strong>, supporting kidney stone treatment without a single cut, scar, or unnecessary radiation exposure.
                             </p>
                         </div>
 

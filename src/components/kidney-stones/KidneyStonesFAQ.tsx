@@ -61,8 +61,25 @@ export default function KidneyStonesFAQ() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <section className="section-tight edge" data-bg="#f5f7ff" data-theme="light">
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
+        />
         <div className="container-x">
             <div className="max-w-3xl mb-10">
                 <div className="chip mb-4"><span className="chip-dot"></span>Questions</div>

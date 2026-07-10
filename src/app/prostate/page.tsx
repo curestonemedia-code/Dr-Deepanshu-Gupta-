@@ -182,7 +182,7 @@ export default function Prostate() {
         <div className="max-w-3xl mb-10">
             <div className="chip mb-4"><span className="chip-dot"></span>Treatment Options</div>
             <h2 className="display-sm split-words">From medication to the modern gold standard.</h2>
-            <p className="body-lg mt-6">Not every man with BPH needs surgery. But when surgery is the right answer, HoLEP is almost always the best one.</p>
+            <p className="body-lg mt-6">Not every man with BPH needs surgery. But when surgery is the right answer, HoLEP is often the preferred option.</p>
         </div>
 
         <div className="grid gap-4">
@@ -303,7 +303,7 @@ export default function Prostate() {
             <div className="timeline-item">
                 <div className="timeline-day">Month 3</div>
                 <div className="heading-sm mb-1">Review & long-term outcome</div>
-                <p className="body">Follow-up uroflowmetry confirms the result. Most patients report a lifetime improvement — HoLEP is the most durable BPH treatment available.</p>
+                <p className="body">Follow-up uroflowmetry confirms the result. Most patients report a lasting improvement, with HoLEP offering a durable, size-independent option for BPH.</p>
             </div>
         </div>
     </div>

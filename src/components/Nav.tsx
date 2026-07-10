@@ -39,10 +39,10 @@ export default function Nav() {
       
       <div className="hidden md:flex items-center gap-8">
         <Link href="/#conditions" className="nav-link">Conditions</Link>
-        <Link href="/#about" className="nav-link">About</Link>
-        <Link href="/#record" className="nav-link">Record</Link>
+        <Link href="/about" className="nav-link">About</Link>
         <Link href="/#testimonials" className="nav-link">Patients</Link>
-        <Link href="/#faq" className="nav-link">FAQ</Link>
+        <Link href="/faq" className="nav-link">FAQ</Link>
+        <Link href="/contact" className="nav-link">Contact</Link>
       </div>
       
       <Link href="/#book" className="btn btn-primary">

@@ -69,19 +69,19 @@ export default function HeroSection() {
                             {/* Blue badge */}
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/80 border border-blue-100/50 mb-6 fade-up opacity-0 translate-y-4 w-fit">
                                 <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-                                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600">MCh Urology — Rank 01 India</span>
+                                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600">MCh Urology — Rank 1 (RML Hospital)</span>
                             </div>
 
                             {/* Headline */}
                             <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-bold text-slate-900 tracking-tight leading-[1.05] mb-6 font-sans">
                                 <div className="overflow-hidden">
                                     <span className="hero-line block" style={{ transform: 'translateY(110%)' }}>
-                                        1<sup className="text-3xl md:text-4xl lg:text-5xl">st</sup> Ever to start
+                                        Specialized
                                     </span>
                                 </div>
-                                <div className="overflow-hidden mt-2">
+                                <div className="mt-2">
                                     <span className="hero-line block" style={{ transform: 'translateY(110%)' }}>
-                                        <span className="text-[#2563eb]">FANS-RIRS</span> in North India.
+                                        <span className="text-[#2563eb]">FANS-RIRS</span> Laser Surgery.
                                     </span>
                                 </div>
                             </h1>
@@ -94,7 +94,7 @@ export default function HeroSection() {
 
                             {/* Body Text */}
                             <p className="text-base md:text-lg text-slate-600 max-w-xl leading-relaxed mb-8 fade-up opacity-0 translate-y-4">
-                                Pioneering fluoroscopy-free laser urology in North India. Over 30,000 procedures performed without the trauma, scars, or radiation of conventional surgery.
+                                Specializing in fluoroscopy-free laser urology for kidney stone treatment. Over 9,000 procedures performed without the trauma, scars, or radiation of conventional surgery.
                             </p>
 
                             {/* CTA Button Actions */}
@@ -118,10 +118,10 @@ export default function HeroSection() {
                             {/* Key Stats Metrics */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 fade-up opacity-0 translate-y-4">
                                 {[
-                                    { val: '30,000+', label: 'Surgical Cases' },
+                                    { val: '9,000+', label: 'Surgical Cases' },
                                     { val: '98%', label: 'Success Rate', accent: true },
                                     { val: '15+', label: 'Years Practice' },
-                                    { val: 'Rank 01', label: 'MCh India' },
+                                    { val: 'Rank 1', label: 'MCh (RML)' },
                                 ].map(({ val, label, accent }) => (
                                     <div key={label} className="relative">
                                         <div className={`text-2xl md:text-3xl font-extrabold tracking-tight ${accent ? 'text-blue-600' : 'text-slate-900'}`}>{val}</div>
@@ -150,9 +150,9 @@ export default function HeroSection() {
                 <div className="container mx-auto px-5 md:px-12 lg:px-20">
                     <div className="flex flex-wrap items-center justify-center md:justify-between gap-y-4 gap-x-8 text-[10px] font-bold uppercase tracking-wider text-slate-500">
                         {[
-                            { Icon: Award, text: 'MCh Urology Rank 01' },
-                            { Icon: ShieldCheck, text: 'Fluoroscopy-Free Pioneer' },
-                            { Icon: Activity, text: '30,000+ Surgeries' },
+                            { Icon: Award, text: 'MCh Urology Rank 1' },
+                            { Icon: ShieldCheck, text: 'Fluoroscopy-Free Specialist' },
+                            { Icon: Activity, text: '9,000+ Surgeries' },
                             { Icon: Zap, text: 'Thulium Laser Certified' },
                             { Icon: Medal, text: 'MS Gold Medalist' },
                             { Icon: HeartPulse, text: '98% Success Rate' },

@@ -29,13 +29,35 @@ export default function LiveOTSection() {
         {
             vid: 'K5va1bE282M', label: 'Case 03 · Protocol',
             title: 'The FANS-RIRS Guide',
-            desc: 'Dr. Gupta breaks down the exact mechanics of the surgery, explaining why modern laser protocols are vastly superior to traditional cuts.',
+            desc: 'Dr. Gupta breaks down the exact mechanics of the surgery, explaining how modern laser protocols avoid the incisions and radiation exposure of traditional open surgery.',
             stats: [{ v: 'FANS', l: 'Technique' }, { v: 'Modern', l: 'Protocol' }, { v: 'Zero', l: 'Cuts', accent: true }],
         },
     ];
 
+    const videoSchemas = cases.map(({ vid, title, desc }) => ({
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        name: title,
+        description: desc,
+        thumbnailUrl: `https://i.ytimg.com/vi/${vid}/hqdefault.jpg`,
+        embedUrl: `https://www.youtube.com/embed/${vid}`,
+        contentUrl: `https://www.youtube.com/watch?v=${vid}`,
+        publisher: {
+            "@type": "Physician",
+            "@id": "https://drdeepanshugupta.com/#physician",
+            name: "Dr. Deepanshu Gupta",
+        },
+    }));
+
     return (
         <section id="cases" className="py-12 md:py-20 relative bg-slate-50" data-bg="#f8fafc" data-theme="light">
+            {videoSchemas.map((schema, i) => (
+                <script
+                    key={cases[i].vid}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
+                />
+            ))}
 
             {/* Header */}
             <div className="container mx-auto mb-8 md:mb-12 px-6 md:px-12 lg:px-20">
