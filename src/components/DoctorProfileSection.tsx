@@ -68,7 +68,7 @@ export default function DoctorProfileSection() {
 
     return (
         <section id="about" className="section edge bg-slate-50/50" data-bg="#f8fafc" data-theme="light">
-            <div id="about-doctor" className="container mx-auto px-5 md:px-12 lg:px-20">
+            <div id="about-doctor" className="container-x">
                 
                 {/* Header Section */}
                 <div className="text-center mb-16 dp-fade-up">
@@ -146,7 +146,7 @@ export default function DoctorProfileSection() {
                                 <Stethoscope className="w-6 h-6 text-blue-600" />
                                 Expert Overview
                             </h4>
-                            <p className="text-lg text-slate-600 leading-relaxed font-medium">
+                            <p className="text-lg text-slate-600 leading-relaxed font-medium text-justify">
                                 Dr. Deepanshu Gupta is an experienced urologist known for precision-led care and a compassionate approach. His work includes <strong className="text-blue-700 font-extrabold uppercase">fluoroscopy-free FANS-RIRS laser surgery</strong>, supporting kidney stone treatment without a single cut, scar, or unnecessary radiation exposure.
                             </p>
                         </div>

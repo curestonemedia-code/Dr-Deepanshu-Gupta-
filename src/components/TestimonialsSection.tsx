@@ -100,7 +100,7 @@ function TestimonialCard({
                             <div className="inline-flex items-center px-2.5 py-1 rounded-full bg-blue-600/90 backdrop-blur-sm text-white text-[10px] font-bold tracking-wider uppercase mb-2">
                                 {cond}
                             </div>
-                            <h3 className="text-white text-lg font-semibold tracking-tight">{name}</h3>
+                            <h3 className="text-white text-lg font-black tracking-tight">{name}</h3>
                             <p className={`text-white/70 text-sm mt-1.5 leading-relaxed transition-all duration-500 ${isHovered ? 'opacity-100 max-h-20' : 'opacity-0 max-h-0'} overflow-hidden`}>
                                 "{quote}"
                             </p>
@@ -162,7 +162,7 @@ export default function TestimonialsSection() {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-40 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-50 rounded-full blur-3xl opacity-60 translate-y-1/2 -translate-x-1/3 pointer-events-none" />
 
-                <div className="container mx-auto px-6 md:px-12 lg:px-20 relative">
+                <div className="container-x edge relative">
                     {/* Header */}
                     <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
                         <div className="max-w-2xl">
@@ -172,7 +172,7 @@ export default function TestimonialsSection() {
                                     05 / Patient Voices
                                 </span>
                             </div>
-                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-slate-900 leading-[1.1]">
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.1]">
                                 In their own<br className="hidden md:block" /> words.
                             </h2>
                             <p className="text-base md:text-lg text-slate-500 mt-5 max-w-xl leading-relaxed">
@@ -222,18 +222,6 @@ export default function TestimonialsSection() {
                                 />
                             </div>
                         ))}
-                    </div>
-
-                    {/* Footer Note */}
-                    <div className="mt-12 flex items-center justify-center gap-2 text-slate-400">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50">
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="12" y1="16" x2="12" y2="12" />
-                            <line x1="12" y1="8" x2="12.01" y2="8" />
-                        </svg>
-                        <p className="text-sm text-slate-400">
-                            Patient names shown are illustrative placeholders — swap in real content when ready.
-                        </p>
                     </div>
                 </div>
             </section>

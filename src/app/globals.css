@@ -4,6 +4,10 @@
    Dr. Deepanshu Gupta · Cure Stone — Shared Design System
    ============================================================ */
 
+@theme {
+    --font-sans: var(--font-poppins);
+}
+
 :root {
     --brand: #2B5CE6;
     --brand-deep: #1e45b8;
@@ -49,11 +53,11 @@
 * { -webkit-font-smoothing: antialiased; box-sizing: border-box; }
 html { overflow-x: hidden; scroll-behavior: auto; }
 body {
-    font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: var(--font-poppins), 'Poppins', system-ui, sans-serif;
     background: var(--bg-white);
     color: var(--ink);
     overflow-x: hidden;
-    font-weight: 400;
+    font-weight: 500;
     margin: 0;
     transition: background-color 0.6s ease, color 0.6s ease;
 }
@@ -71,32 +75,33 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ---- Typography ---- */
+/* Weights matched to Cure Stone's own type scale: font-black titles/subtitles, font-medium body copy. */
 .display {
-    font-weight: 300; letter-spacing: -0.035em; line-height: 0.98;
+    font-weight: 900; letter-spacing: -0.035em; line-height: 0.98;
     font-size: clamp(3rem, 8vw, 7.5rem);
 }
 .display-sm {
-    font-weight: 300; letter-spacing: -0.03em; line-height: 1.02;
+    font-weight: 900; letter-spacing: -0.03em; line-height: 1.02;
     font-size: clamp(2.25rem, 5vw, 4.5rem);
 }
 .display-xl {
-    font-weight: 300; letter-spacing: -0.04em; line-height: 0.95;
+    font-weight: 900; letter-spacing: -0.04em; line-height: 0.95;
     font-size: clamp(4rem, 12vw, 10rem);
 }
 .heading {
-    font-weight: 500; letter-spacing: -0.02em; line-height: 1.15;
+    font-weight: 900; letter-spacing: -0.02em; line-height: 1.15;
     font-size: clamp(1.75rem, 3vw, 2.5rem);
 }
 .heading-sm {
-    font-weight: 500; letter-spacing: -0.015em; line-height: 1.2;
+    font-weight: 700; letter-spacing: -0.015em; line-height: 1.2;
     font-size: 1.5rem;
 }
 .eyebrow {
-    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
 }
-.body-lg { font-size: 1.125rem; line-height: 1.65; color: var(--ink-soft); font-weight: 400; }
-.body    { font-size: 1rem;     line-height: 1.65; color: var(--ink-soft); font-weight: 400; }
-.body-sm { font-size: 0.875rem; line-height: 1.6;  color: var(--ink-muted); font-weight: 400; }
+.body-lg { font-size: 1.125rem; line-height: 1.65; color: var(--ink-soft); font-weight: 500; }
+.body    { font-size: 1rem;     line-height: 1.65; color: var(--ink-soft); font-weight: 500; }
+.body-sm { font-size: 0.875rem; line-height: 1.6;  color: var(--ink-muted); font-weight: 500; }
 .mark { color: var(--brand); }
 
 .on-dark .body-lg, .on-dark .body, .on-dark .body-sm { color: var(--on-dark-muted); }
@@ -155,12 +160,14 @@ a { text-decoration: none; color: inherit; }
 /* ---- Nav ---- */
 #navbar {
     position: fixed; top: 0; left: 0; width: 100%;
-    z-index: 50; padding: 1.25rem 5vw;
-    display: flex; justify-content: space-between; align-items: center;
+    z-index: 50; padding: 1.25rem 0;
     background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px);
     transition: background 0.4s ease, backdrop-filter 0.4s ease, color 0.6s ease, border-color 0.4s ease;
     border-bottom: 1px solid transparent;
+}
+#navbar .nav-inner {
+    display: flex; justify-content: space-between; align-items: center;
 }
 #navbar.scrolled {
     background: rgba(255, 255, 255, 0.78);
@@ -793,6 +800,17 @@ body.on-dark .service-block { border-color: rgba(255,255,255,0.08); }
     position: absolute; inset: 0;
     background: linear-gradient(180deg, var(--brand-soft) 0%, transparent 100%);
     pointer-events: none;
+}
+.cond-hero-bg::before, .cond-hero-bg::after {
+    content: ''; position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none;
+}
+.cond-hero-bg::before {
+    top: -10%; right: -8%; width: 32rem; height: 32rem;
+    background: radial-gradient(circle, var(--brand-light) 0%, transparent 70%); opacity: 0.18;
+}
+.cond-hero-bg::after {
+    bottom: -20%; left: -10%; width: 26rem; height: 26rem;
+    background: radial-gradient(circle, var(--brand) 0%, transparent 70%); opacity: 0.1;
 }
 .cond-breadcrumb {
     display: flex; align-items: center; gap: 0.5rem;

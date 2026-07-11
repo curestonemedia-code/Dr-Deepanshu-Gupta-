@@ -108,9 +108,9 @@ export default function ZoomSceneSection() {
                                 03 / The Record
                             </span>
                         </div>
-                        <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-[6.5rem] font-normal text-white tracking-tight leading-[0.95] font-sans">
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-[6.5rem] font-black text-white tracking-tight leading-[0.95] font-sans">
                             Numbers, not<br />
-                            <span className="font-normal text-white">adjectives.</span>
+                            <span className="font-black text-white">adjectives.</span>
                         </h2>
                     </div>
 

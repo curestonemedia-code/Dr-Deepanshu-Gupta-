@@ -141,7 +141,7 @@ export default function FAQSection() {
     };
 
     return (
-        <section id="faq" className="py-20 md:py-28 bg-[#f5f7ff] relative overflow-hidden" data-bg="#f5f7ff" data-theme="light">
+        <section id="faq" className="py-20 md:py-28 bg-[#f5f7ff] relative overflow-hidden edge" data-bg="#f5f7ff" data-theme="light">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
@@ -150,7 +150,7 @@ export default function FAQSection() {
             <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-100/30 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="container mx-auto px-5 md:px-12 lg:px-20 relative">
+            <div className="container-x relative">
                 <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
                     
                     {/* Left Column - Sticky Header */}
@@ -163,11 +163,11 @@ export default function FAQSection() {
                                 </span>
                             </div>
                             
-                            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-normal tracking-tight text-slate-900 leading-[1.1] font-sans">
+                            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black tracking-tight text-slate-900 leading-[1.1] font-sans">
                                 Everything<br className="hidden lg:block" /> patients ask.
                             </h2>
-                            
-                            <p className="text-base md:text-lg text-slate-500 mt-5 leading-relaxed max-w-md font-normal">
+
+                            <p className="text-base md:text-lg text-slate-500 mt-5 leading-relaxed max-w-md font-medium">
                                 The most common concerns we hear in the consultation room, answered honestly. If yours isn't here, message us directly.
                             </p>
 

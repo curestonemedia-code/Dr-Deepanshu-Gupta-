@@ -45,6 +45,7 @@ export default function Footer() {
               <div className="eyebrow mb-4" style={{ color: 'var(--brand-light)' }}>Explore</div>
               <div className="flex flex-col gap-2" style={{ fontSize: '0.875rem' }}>
                 <Link href="/about" style={{ color: 'var(--on-dark-muted)' }} className="hover:text-white transition">About</Link>
+                <Link href="/patients" style={{ color: 'var(--on-dark-muted)' }} className="hover:text-white transition">Patients</Link>
                 <Link href="/faq" style={{ color: 'var(--on-dark-muted)' }} className="hover:text-white transition">FAQ</Link>
                 <Link href="/contact" style={{ color: 'var(--on-dark-muted)' }} className="hover:text-white transition">Contact</Link>
               </div>

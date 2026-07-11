@@ -33,22 +33,24 @@ export default function Nav() {
 
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
-      <Link href="/" className="brand-logo py-1">
-        <img src="/logo.png" alt="Dr. Deepanshu Gupta" className="h-10 md:h-11 w-auto object-contain" />
-      </Link>
-      
-      <div className="hidden md:flex items-center gap-8">
-        <Link href="/#conditions" className="nav-link">Conditions</Link>
-        <Link href="/about" className="nav-link">About</Link>
-        <Link href="/#testimonials" className="nav-link">Patients</Link>
-        <Link href="/faq" className="nav-link">FAQ</Link>
-        <Link href="/contact" className="nav-link">Contact</Link>
+      <div className="nav-inner container-x edge">
+        <Link href="/" className="brand-logo py-1">
+          <img src="/logo.png" alt="Dr. Deepanshu Gupta" className="h-10 md:h-11 w-auto object-contain" />
+        </Link>
+
+        <div className="hidden md:flex items-center gap-8">
+          <Link href="/#conditions" className="nav-link">Conditions</Link>
+          <Link href="/about" className="nav-link">About</Link>
+          <Link href="/patients" className="nav-link">Patients</Link>
+          <Link href="/faq" className="nav-link">FAQ</Link>
+          <Link href="/contact" className="nav-link">Contact</Link>
+        </div>
+
+        <Link href="/#book" className="btn btn-primary">
+          <Calendar style={{ width: '16px', height: '16px' }} />
+          Book Consult
+        </Link>
       </div>
-      
-      <Link href="/#book" className="btn btn-primary">
-        <Calendar style={{ width: '16px', height: '16px' }} />
-        Book Consult
-      </Link>
     </nav>
   );
 }

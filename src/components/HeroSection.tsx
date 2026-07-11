@@ -60,7 +60,7 @@ export default function HeroSection() {
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-indigo-200/20 blur-3xl pointer-events-none translate-y-1/3 -translate-x-1/4" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-blue-50/30 blur-3xl pointer-events-none" />
 
-                <div className="container mx-auto px-5 md:px-12 lg:px-20 relative z-10 py-20 md:py-0">
+                <div className="container-x edge relative z-10 py-20 md:py-0">
                     <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center min-h-[calc(100dvh-10rem)] md:min-h-0">
 
                         {/* Left Content Column */}
@@ -73,7 +73,7 @@ export default function HeroSection() {
                             </div>
 
                             {/* Headline */}
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-bold text-slate-900 tracking-tight leading-[1.05] mb-6 font-sans">
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-black text-slate-900 tracking-tight leading-[1.05] mb-6 font-sans">
                                 <div className="overflow-hidden">
                                     <span className="hero-line block" style={{ transform: 'translateY(110%)' }}>
                                         Specialized
@@ -93,7 +93,7 @@ export default function HeroSection() {
                             </div>
 
                             {/* Body Text */}
-                            <p className="text-base md:text-lg text-slate-600 max-w-xl leading-relaxed mb-8 fade-up opacity-0 translate-y-4">
+                            <p className="text-base md:text-lg text-slate-600 max-w-xl leading-relaxed mb-8 fade-up opacity-0 translate-y-4 text-justify">
                                 Specializing in fluoroscopy-free laser urology for kidney stone treatment. Over 9,000 procedures performed without the trauma, scars, or radiation of conventional surgery.
                             </p>
 
@@ -101,7 +101,7 @@ export default function HeroSection() {
                             <div className="flex flex-wrap items-center gap-4 fade-up opacity-0 translate-y-4 mb-10">
                                 <a
                                     href="#book"
-                                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#2563eb] text-white text-sm font-semibold hover:bg-blue-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/20 active:scale-95"
+                                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#2563eb] text-white! text-sm hover:bg-blue-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/20 active:scale-95"
                                 >
                                     <Calendar style={{ width: '18px', height: '18px' }} />
                                     <span>Book a Consultation</span>
@@ -147,7 +147,7 @@ export default function HeroSection() {
 
             {/* ── TRUST STRIP ── */}
             <div className="border-t border-b border-slate-200/60 bg-slate-50/80 backdrop-blur-sm py-5" data-bg="#f5f7ff" data-theme="light">
-                <div className="container mx-auto px-5 md:px-12 lg:px-20">
+                <div className="container-x edge">
                     <div className="flex flex-wrap items-center justify-center md:justify-between gap-y-4 gap-x-8 text-[10px] font-bold uppercase tracking-wider text-slate-500">
                         {[
                             { Icon: Award, text: 'MCh Urology Rank 1' },

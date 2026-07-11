@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
 import SmoothScroll from "@/components/SmoothScroll";
@@ -8,10 +8,10 @@ import ScrollProgress from "@/components/ScrollProgress";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  weight: ['300', '400', '500', '600', '700', '800'],
+const poppins = Poppins({
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-poppins",
 });
 
 const SITE_URL = "https://drdeepanshugupta.com";
@@ -151,7 +151,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} h-full antialiased bg-gradient-primary`}
+      className={`${poppins.variable} h-full antialiased bg-gradient-primary`}
     >
       <head>
         <script

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, Clock, ChevronRight } from "lucide-react";
 
 const SITE_URL = "https://drdeepanshugupta.com";
 const TITLE = "Contact Dr. Deepanshu Gupta";
@@ -102,13 +102,18 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema).replace(/</g, "\\u003c") }}
       />
 
-      <section className="section-tight edge relative overflow-hidden bg-slate-50/50" data-bg="#f8fafc" data-theme="light">
-        <div className="container mx-auto px-5 md:px-12 lg:px-20 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-white/80 backdrop-blur-sm border border-blue-100 rounded-full shadow-sm">
-            <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-            <span className="text-[11px] font-bold tracking-[0.1em] text-blue-700 uppercase">Contact</span>
+      <section className="cond-hero edge" data-bg="#f8fafc" data-theme="light">
+        <div className="cond-hero-bg"></div>
+        <div className="container-x relative text-center">
+          <div className="cond-breadcrumb justify-center">
+            <Link href="/">Home</Link>
+            <ChevronRight style={{ width: "14px", height: "14px" }} />
+            <span>Contact</span>
           </div>
-          <h1 className="display-sm text-slate-900 font-bold mb-6">Get in Touch</h1>
+          <div className="chip mb-6 mx-auto w-fit">
+            <span className="chip-dot"></span>Contact
+          </div>
+          <h1 className="display-sm text-slate-900 mb-6">Get in Touch</h1>
           <p className="body-lg text-slate-600 max-w-2xl mx-auto">
             Speak with our care team for appointments, scan review, or a second opinion at Cure Stone Hospital, Sector 52, Gurugram.
           </p>
@@ -116,7 +121,7 @@ export default function ContactPage() {
       </section>
 
       <section className="section-tight edge">
-        <div className="container mx-auto px-5 md:px-12 lg:px-20">
+        <div className="container-x">
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             {contactCards.map((card) => (
               <a
@@ -186,7 +191,7 @@ export default function ContactPage() {
 
               <Link
                 href="/?interest=other#book"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#2563eb] text-white font-black rounded-full hover:bg-blue-700 transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#2563eb] text-white! font-black rounded-full hover:bg-blue-700 transition-all"
               >
                 Book a Consultation
               </Link>

@@ -18,7 +18,7 @@ export default function LiveOTSection() {
             vid: 'TTaSMfmViUk', label: 'Case 01 · Shimla',
             title: '22mm Stone Clearance',
             desc: 'Patient travelled from Shimla after 4 failed surgeries. Successfully treated using FANS-RIRS laser technology with a 24-hour discharge.',
-            stats: [{ v: '24h', l: 'Discharge' }, { v: '0', l: 'Incisions' }, { v: '100%', l: 'Clearance', accent: true }],
+            stats: [{ v: '24h', l: 'Discharge' }, { v: '0', l: 'Incisions' }, { v: 'Stone-Free', l: 'Outcome', accent: true }],
         },
         {
             vid: '4xDV33Zgba4', label: 'Case 02 · Assam',
@@ -60,7 +60,7 @@ export default function LiveOTSection() {
             ))}
 
             {/* Header */}
-            <div className="container mx-auto mb-8 md:mb-12 px-6 md:px-12 lg:px-20">
+            <div className="container-x edge mb-8 md:mb-12">
                 <div className="flex items-center justify-between">
                     <div>
                         <div className="flex items-center gap-2 mb-4">
@@ -69,7 +69,7 @@ export default function LiveOTSection() {
                                 04 / Live OT
                             </span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-slate-900 mb-4 font-sans">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 mb-4 font-sans">
                             Operating theatre, unedited.
                         </h2>
                         <p className="text-base md:text-lg text-slate-500 max-w-2xl leading-relaxed">
@@ -132,10 +132,10 @@ export default function LiveOTSection() {
                                     <div className="inline-flex items-center px-2.5 py-1 rounded-full bg-blue-50 text-[#2563eb] text-[9px] font-bold tracking-wider uppercase mb-3 w-fit">
                                         {label}
                                     </div>
-                                    <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold text-slate-900 tracking-tight mb-2">
+                                    <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight mb-2">
                                         {title}
                                     </h3>
-                                    <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-6 font-normal">
+                                    <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-6 font-medium">
                                         {desc}
                                     </p>
                                 </div>

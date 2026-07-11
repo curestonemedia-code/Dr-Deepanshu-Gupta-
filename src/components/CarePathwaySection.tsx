@@ -13,7 +13,7 @@ export default function CarePathwaySection() {
             stats: [
                 { val: 'HD Imaging', label: 'Modality' },
                 { val: '30 min', label: 'Session' },
-                { val: '0 rad', label: 'Radiation', accent: true },
+                { val: 'Non-Invasive', label: 'Diagnostics', accent: true },
             ],
             theme: 'dark',
             pos: '12% center',
@@ -28,7 +28,7 @@ export default function CarePathwaySection() {
             stats: [
                 { val: 'TFL', label: 'Laser' },
                 { val: '45–90 min', label: 'Duration' },
-                { val: '100%', label: 'Clearance', accent: true },
+                { val: 'Zero', label: 'Radiation', accent: true },
             ],
             theme: 'dark',
         },
@@ -36,7 +36,7 @@ export default function CarePathwaySection() {
             num: '03',
             phase: 'Post-Op',
             title: 'Swift Recovery',
-            desc: 'No cuts, no stitches — most patients are discharged the same day and back to normal life within 48 hours.',
+            desc: 'No cuts, no stitches — most patients are discharged within 24 hours and back to normal life within 48 hours.',
             img: '/12.webp',
             alt: 'Recovery',
             stats: [
@@ -63,7 +63,7 @@ export default function CarePathwaySection() {
                                 02 / The Care Pathway
                             </span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-normal tracking-[-0.035em] text-slate-900 leading-[1.05] font-sans">
+                        <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black tracking-[-0.035em] text-slate-900 leading-[1.05] font-sans">
                             From diagnosis<br className="hidden md:block" /> to discharge.
                         </h2>
                     </div>
@@ -101,7 +101,7 @@ export default function CarePathwaySection() {
                             {step.theme === 'dark' && (
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
                             )}
-
+    
                             {/* Step Number Badge */}
                             <div className={`absolute top-6 left-6 w-10 h-10 rounded-full flex items-center justify-center border transition-colors duration-300
                                 ${step.theme === 'dark'

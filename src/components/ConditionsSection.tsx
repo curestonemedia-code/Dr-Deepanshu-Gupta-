@@ -54,10 +54,10 @@ export default function ConditionsSection() {
                             01 / Conditions Treated
                         </span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-normal tracking-[-0.035em] text-slate-900 leading-[1.1] font-sans">
+                    <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black tracking-[-0.035em] text-slate-900 leading-[1.1] font-sans">
                         Specialised care for<br className="hidden md:block" /> specialised problems.
                     </h2>
-                    <p className="text-base md:text-lg text-slate-500 mt-5 max-w-2xl leading-relaxed font-normal">
+                    <p className="text-base md:text-lg text-slate-500 mt-5 max-w-2xl leading-relaxed font-medium">
                         Deep expertise across three urological domains. Tap any condition to understand symptoms, diagnosis, and treatment options.
                     </p>
                 </div>
@@ -82,12 +82,12 @@ export default function ConditionsSection() {
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-xl md:text-[1.35rem] font-semibold text-slate-900 tracking-tight mb-3">
+                                <h3 className="text-xl md:text-[1.35rem] font-black text-slate-900 tracking-tight mb-3">
                                     {title}
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-sm md:text-[15px] text-slate-500 leading-relaxed mb-6 font-normal">
+                                <p className="text-sm md:text-[15px] text-slate-500 leading-relaxed mb-6 font-medium">
                                     {desc}
                                 </p>
 

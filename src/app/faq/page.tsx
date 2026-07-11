@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import FaqAccordion from "@/components/FaqAccordion";
 import { ALL_FAQS, FAQ_CATEGORIES } from "@/constants/faqs";
 
@@ -66,13 +67,18 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
       />
 
-      <section className="section-tight edge relative overflow-hidden bg-slate-50/50" data-bg="#f8fafc" data-theme="light">
-        <div className="container mx-auto px-5 md:px-12 lg:px-20 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-white/80 backdrop-blur-sm border border-blue-100 rounded-full shadow-sm">
-            <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-            <span className="text-[11px] font-bold tracking-[0.1em] text-blue-700 uppercase">FAQ</span>
+      <section className="cond-hero edge" data-bg="#f8fafc" data-theme="light">
+        <div className="cond-hero-bg"></div>
+        <div className="container-x relative text-center">
+          <div className="cond-breadcrumb justify-center">
+            <Link href="/">Home</Link>
+            <ChevronRight style={{ width: "14px", height: "14px" }} />
+            <span>FAQ</span>
           </div>
-          <h1 className="display-sm text-slate-900 font-bold mb-6">Frequently Asked Questions</h1>
+          <div className="chip mb-6 mx-auto w-fit">
+            <span className="chip-dot"></span>FAQ
+          </div>
+          <h1 className="display-sm text-slate-900 mb-6">Frequently Asked Questions</h1>
           <p className="body-lg text-slate-600 max-w-2xl mx-auto mb-10">
             Answers on kidney stones, prostate treatment, and male fertility &amp; andrology care.
           </p>
@@ -92,20 +98,22 @@ export default function FaqPage() {
       </section>
 
       <section className="section edge">
-        <div className="container mx-auto px-5 md:px-12 lg:px-20 max-w-3xl space-y-16">
-          {FAQ_CATEGORIES.map((category) => (
-            <div key={category.slug} id={category.slug} className="scroll-mt-28">
-              <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
-                <h2 className="heading">{category.title}</h2>
-                {category.relatedHref && (
-                  <Link href={category.relatedHref} className="text-sm font-black text-blue-600 hover:underline whitespace-nowrap">
-                    {category.relatedLabel} →
-                  </Link>
-                )}
+        <div className="container-x">
+          <div className="max-w-3xl mx-auto space-y-16">
+            {FAQ_CATEGORIES.map((category) => (
+              <div key={category.slug} id={category.slug} className="scroll-mt-28">
+                <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
+                  <h2 className="heading">{category.title}</h2>
+                  {category.relatedHref && (
+                    <Link href={category.relatedHref} className="text-sm font-black text-blue-600 hover:underline whitespace-nowrap">
+                      {category.relatedLabel} →
+                    </Link>
+                  )}
+                </div>
+                <FaqAccordion items={category.items} />
               </div>
-              <FaqAccordion items={category.items} />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 

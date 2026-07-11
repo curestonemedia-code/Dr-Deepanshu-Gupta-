@@ -12,6 +12,7 @@ const ROUTES: Array<{
   { path: "/prostate", changeFrequency: "monthly", priority: 0.9 },
   { path: "/andrology", changeFrequency: "monthly", priority: 0.9 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/patients", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.6 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.7 },
 ];

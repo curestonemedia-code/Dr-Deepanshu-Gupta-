@@ -90,7 +90,7 @@ export default function Andrology() {
 
                 {/* Subtle floating accent shapes */}
                 <div className="absolute top-20 right-20 w-72 h-72 bg-blue-50 rounded-full blur-3xl opacity-40 animate-pulse"></div>
-                <div className="absolute bottom-10 left-10 w-96 h-96 bg-teal-50 rounded-full blur-3xl opacity-30"></div>
+                <div className="absolute bottom-10 left-10 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-30"></div>
 
                 <div className="container-x relative z-10 pt-8 pb-16 lg:pb-24">
                     {/* Enhanced breadcrumb with better spacing and hover states */}
@@ -117,23 +117,17 @@ export default function Andrology() {
                         {/* Main content area */}
                         <div className="lg:col-span-7 xl:col-span-8">
                             {/* Chip with pulse animation */}
-                            <div className="chip mb-8 inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-teal-50 border border-teal-100 text-teal-800 text-sm font-medium">
+                            <div className="chip mb-8">
                                 <span className="chip-dot relative flex h-2.5 w-2.5">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-teal-500"></span>
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--brand)] opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--brand)]"></span>
                                 </span>
                                 Male Infertility & Andrology
                             </div>
 
-                            {/* Headline with gradient text option and better typography */}
-                            <h1 className="display mb-8 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 leading-[1.1] tracking-tight">
-                                <span className="block">Answers, not</span>
-                                <span className="block bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
-                                    assumptions.
-                                </span>
-                                <span className="block mt-2 text-slate-400 font-normal text-3xl sm:text-4xl lg:text-5xl">
-                                    Discretion, always.
-                                </span>
+                            {/* Headline matched to the site's display type scale */}
+                            <h1 className="display mb-8 split-words">
+                                Answers, not assumptions. Discretion, always.
                             </h1>
 
                             {/* Body with better readability */}
@@ -292,7 +286,7 @@ export default function Andrology() {
                                 {/* Content */}
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-start justify-between gap-3 mb-1.5">
-                                        <h3 className="text-base lg:text-lg font-semibold text-slate-900 leading-snug group-hover:text-indigo-700 transition-colors">
+                                        <h3 className="text-base lg:text-lg font-black text-slate-900 leading-snug group-hover:text-indigo-700 transition-colors">
                                             {symptom.title}
                                         </h3>
                                         <span className={`hidden sm:inline-flex flex-shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold border ${symptom.tagColor}`}>
