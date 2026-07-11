@@ -103,7 +103,16 @@ export default function ContactPage() {
       />
 
       <section className="cond-hero edge" data-bg="#f8fafc" data-theme="light">
-        <div className="cond-hero-bg"></div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14033.273570394473!2d77.070288!3d28.439817!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19559d21f213%3A0xa736733167a5023b!2sCure%20Stone!5e0!3m2!1sen!2sin!4v1782981388299!5m2!1sen!2sin"
+          className="pointer-events-none absolute inset-0 h-full w-full scale-110 border-0 opacity-15 grayscale"
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          tabIndex={-1}
+          aria-hidden="true"
+          title="Cure Stone Hospital map background"
+        />
+        {/* <div className="cond-hero-bg"></div> */}
         <div className="container-x relative text-center">
           <div className="cond-breadcrumb justify-center">
             <Link href="/">Home</Link>

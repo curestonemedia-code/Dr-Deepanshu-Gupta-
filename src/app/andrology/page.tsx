@@ -140,7 +140,7 @@ export default function Andrology() {
 
                             {/* CTA Buttons - Added for conversion */}
                             <div className="mt-10 flex flex-wrap gap-4">
-                                <Link href="/?interest=infertility#book" className="px-8 py-4 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition-all duration-200 hover:shadow-lg hover:shadow-slate-900/20 active:scale-[0.98] flex items-center gap-2">
+                                <Link href="/?interest=infertility#book" className="px-8 py-4 bg-slate-900 text-white! rounded-xl font-semibold hover:bg-slate-800 transition-all duration-200 hover:shadow-lg hover:shadow-slate-900/20 active:scale-[0.98] flex items-center gap-2">
                                     Book Consultation
                                     <Icons.ArrowRight className="w-4 h-4" />
                                 </Link>

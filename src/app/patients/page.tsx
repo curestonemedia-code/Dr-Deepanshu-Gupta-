@@ -74,7 +74,7 @@ export default function PatientsPage() {
       <section className="pb-24 text-center px-5">
         <Link
           href="/?interest=other#book"
-          className="inline-flex items-center gap-2 px-8 py-4 bg-[#2563eb] text-white font-black rounded-full hover:bg-blue-700 transition-all"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-[#2563eb] text-white! font-black rounded-full hover:bg-blue-700 transition-all"
         >
           Book a Consultation
         </Link>

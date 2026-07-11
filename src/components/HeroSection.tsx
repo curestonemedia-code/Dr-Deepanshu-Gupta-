@@ -49,16 +49,16 @@ export default function HeroSection() {
                         className="w-full h-full object-cover opacity-100 "
                         src="/Edit.mp4"
                     />
-                    <div className="absolute inset-0 bg-white/85 lg:bg-transparent lg:bg-gradient-to-r lg:from-white lg:via-white/90 lg:to-white/30 backdrop-blur-[2px]" />
+                    <div className="absolute inset-0 bg-white/85 lg:bg-transparent lg:bg-gradient-to-r lg:from-white lg:via-white/80 lg:to-white/10" />
                 </div>
 
                 {/* Background Grid Pattern */}
 
 
                 {/* Ambient Glow Orbs */}
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none -translate-y-1/3 translate-x-1/4" />
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-indigo-200/20 blur-3xl pointer-events-none translate-y-1/3 -translate-x-1/4" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-blue-50/30 blur-3xl pointer-events-none" />
+                {/* <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none -translate-y-1/3 translate-x-1/4" /> */}
+                {/* <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-indigo-200/20 blur-3xl pointer-events-none translate-y-1/3 -translate-x-1/4" /> */}
+                {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-blue-50/30 blur-3xl pointer-events-none" /> */}
 
                 <div className="container-x edge relative z-10 py-20 md:py-0">
                     <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center min-h-[calc(100dvh-10rem)] md:min-h-0">
