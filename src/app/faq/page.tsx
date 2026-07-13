@@ -125,7 +125,7 @@ export default function FaqPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/?interest=other#book" className="btn btn-white btn-lg">
-              Book a Consultation
+              Book Free Consultation
             </Link>
             <a
               href="https://wa.me/918800263884"

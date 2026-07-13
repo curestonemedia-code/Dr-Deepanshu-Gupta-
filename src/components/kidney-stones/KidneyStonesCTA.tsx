@@ -18,7 +18,7 @@ export default function KidneyStonesCTA() {
             <div className="flex flex-wrap items-center justify-center gap-4">
                 <Link href="/?interest=kidney-stones#book" className="btn btn-white btn-lg">
                     <Calendar style={{ width: '18px', height: '18px' }} />
-                    Book a Consultation
+                    Book Free Consultation
                 </Link>
                 <a href="https://wa.me/918800263884" className="btn btn-lg" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
                     <MessageCircle style={{ width: '18px', height: '18px' }} />

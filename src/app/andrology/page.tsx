@@ -141,7 +141,7 @@ export default function Andrology() {
                             {/* CTA Buttons - Added for conversion */}
                             <div className="mt-10 flex flex-wrap gap-4">
                                 <Link href="/?interest=infertility#book" className="px-8 py-4 bg-slate-900 text-white! rounded-xl font-semibold hover:bg-slate-800 transition-all duration-200 hover:shadow-lg hover:shadow-slate-900/20 active:scale-[0.98] flex items-center gap-2">
-                                    Book Consultation
+                                    Book Free Consultation
                                     <Icons.ArrowRight className="w-4 h-4" />
                                 </Link>
                                 <Link href="#symptoms" className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 active:scale-[0.98] flex items-center gap-2">
@@ -563,7 +563,7 @@ export default function Andrology() {
                     <div className="flex flex-wrap items-center justify-center gap-4">
                         <Link href="/?interest=infertility#book" className="btn btn-white btn-lg">
                             <Icons.Calendar style={{ "width": "18px", "height": "18px" }} />
-                            Book a Consultation
+                            Book Free Consultation
                         </Link>
                         <a href="https://wa.me/918800263884" className="btn btn-lg" style={{ "background": "rgba(255,255,255,0.1)", "color": "#fff", "border": "1px solid rgba(255,255,255,0.2)" }}>
                             <Icons.MessageCircle style={{ "width": "18px", "height": "18px" }} />

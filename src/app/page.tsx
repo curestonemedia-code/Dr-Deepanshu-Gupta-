@@ -245,7 +245,7 @@ export default function Home() {
             <section id="book" className="section edge relative overflow-hidden" data-bg="#ffffff" data-theme="light">
                 <div className="container-x">
                     <div className="max-w-3xl mx-auto text-center mb-12">
-                        <div className="chip mb-6 mx-auto"><span className="chip-dot"></span>07 &nbsp;/&nbsp; Book a Consultation</div>
+                        <div className="chip mb-6 mx-auto"><span className="chip-dot"></span>07 &nbsp;/&nbsp; Book Free Consultation</div>
                         <h2 className="display-sm split-words">Let&apos;s get started.</h2>
                         <p className="body-lg mt-6">Same-day WhatsApp responses · Cashless insurance supported · Telemedicine available for remote patients.</p>
                     </div>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Calendar, Menu, X } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -48,7 +48,7 @@ export default function Nav() {
 
         <Link href="/#book" className="btn btn-primary">
           <Calendar style={{ width: '16px', height: '16px' }} />
-          Book Consult
+          Book Free Consultation
         </Link>
       </div>
     </nav>

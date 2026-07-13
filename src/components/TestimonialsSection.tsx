@@ -119,31 +119,31 @@ export default function TestimonialsSection() {
     const testimonials = [
         {
             vid: 'TTaSMfmViUk',
-            img: 'https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?q=80&w=600&auto=format&fit=crop',
-            name: 'Rajesh K., 48',
+            img: '',
+            name: 'Mr. Devendra Thakur',
             cond: '22mm Stone · Shimla',
             quote: 'After 4 failed surgeries elsewhere, I finally found relief. The laser procedure was painless and I was home in 24 hours.'
         },
         {
             vid: '4xDV33Zgba4',
-            img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=600&auto=format&fit=crop',
-            name: 'Priyanka S., 36',
+            img: '',
+            name: 'Anwar Hussain, 27',
             cond: 'Staghorn Stone · Assam',
             quote: 'I travelled 2000 km for this treatment. The thulium laser dusting technology saved me from open surgery.'
         },
         {
-            vid: 'K5va1bE282M',
-            img: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?q=80&w=600&auto=format&fit=crop',
-            name: 'Harish M., 62',
-            cond: 'Prostate / HoLEP · Delhi',
-            quote: 'At my age, I was terrified of surgery. The HoLEP procedure was remarkably smooth — no catheter, no pain.'
+            vid: 'r6gHddV_OpM',
+            img: '',
+            name: '25mm का kidney stone ख़तम',
+            cond: 'Kidney Stone · Delhi',
+            quote: 'I was scared of open surgery. The laser procedure was quick, painless, and I was back to work in 2 days.'
         },
         {
-            vid: 'TTaSMfmViUk',
-            img: 'https://images.unsplash.com/photo-1582560475093-ba66accbc424?q=80&w=600&auto=format&fit=crop',
-            name: 'Vikram A., 41',
-            cond: 'Male Infertility · Gurugram',
-            quote: 'The microsurgical approach made all the difference. Professional, compassionate, and life-changing results.'
+            vid: 'ZIIGg4vRM5c',
+            img: '',
+            name: 'Odisha से आकर निकलवाया Kidney Stone',
+            cond: 'Kidney Stone · Odisha',
+            quote: 'I had been trying to conceive for 3 years. After the laser treatment, my sperm count improved significantly.'
         },
     ];
 

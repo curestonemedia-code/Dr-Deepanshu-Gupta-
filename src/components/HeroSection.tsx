@@ -49,11 +49,10 @@ export default function HeroSection() {
                         className="w-full h-full object-cover opacity-100 "
                         src="/Edit.mp4"
                     />
-                    <div className="absolute inset-0 bg-white/85 lg:bg-transparent lg:bg-gradient-to-r lg:from-white lg:via-white/80 lg:to-white/10" />
+                    <div className="absolute inset-0 bg-white/85 lg:bg-transparent lg:bg-gradient-to-r lg:from-white lg:via-white/60 lg:via-white/10 lg:via-white/0 lg:to-white/0" />
                 </div>
 
                 {/* Background Grid Pattern */}
-
 
                 {/* Ambient Glow Orbs */}
                 {/* <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none -translate-y-1/3 translate-x-1/4" /> */}
@@ -104,7 +103,7 @@ export default function HeroSection() {
                                     className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#2563eb] text-white! text-sm hover:bg-blue-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/20 active:scale-95"
                                 >
                                     <Calendar style={{ width: '18px', height: '18px' }} />
-                                    <span>Book a Consultation</span>
+                                    <span>Book Free Consultation</span>
                                 </a>
                                 <a
                                     href="#cases"

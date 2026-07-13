@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Award, GraduationCap, ShieldCheck, Star, Users, BookOpen, Trophy, History, Stethoscope, MapPin, CalendarCheck2, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 export default function DoctorProfileSection() {
     useEffect(() => {
@@ -128,7 +129,12 @@ export default function DoctorProfileSection() {
                                 </div>
                                 <div>
                                     <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.15em]">Primary Clinic Location</p>
-                                    <p className="text-sm font-bold text-slate-800 mt-1">Cure Stone Hospital, Sector 52, Gurugram</p>
+                                    <Link href="https://maps.app.goo.gl/6HjEJfWJu2MwhYiT9" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-slate-800 mt-1">
+                                    <span className='underline'>
+
+                                        Cure Stone Hospital, Sector 52, Gurugram
+                                    </span>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +205,7 @@ export default function DoctorProfileSection() {
                         <div className="dp-fade-up flex flex-col sm:flex-row gap-4 pt-4">
                             <a href="/#book" className="flex-1 px-8 py-4 bg-blue-600 text-white! text-sm font-black rounded-full hover:bg-blue-700 transition-all flex items-center justify-center gap-3 shadow-lg shadow-blue-600/20 active:scale-[0.98]">
                                 <CalendarCheck2 className="w-5 h-5" />
-                                Book Consultation Free
+                                Book Free Consultation
                             </a>
                             <a href="https://wa.me/918800263884" target="_blank" rel="noreferrer" className="flex-1 px-8 py-4 bg-white border-2 border-slate-200 text-slate-800 text-sm font-black rounded-full hover:border-green-500 hover:bg-green-50 hover:text-green-700 transition-all flex items-center justify-center gap-3 shadow-sm active:scale-[0.98]">
                                 <MessageCircle className="w-5 h-5 text-green-600" />
