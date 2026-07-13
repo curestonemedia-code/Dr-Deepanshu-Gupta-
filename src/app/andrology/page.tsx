@@ -184,21 +184,6 @@ export default function Andrology() {
                                     </div>
                                 ))}
                             </div>
-
-                            {/* Trust badge */}
-                            <div className="mt-6 flex items-center gap-3 px-5 py-4 bg-slate-50 rounded-xl border border-slate-100">
-                                <div className="flex -space-x-2">
-                                    {[1, 2, 3].map(i => (
-                                        <div key={i} className="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-xs font-bold text-slate-500">
-                                            {String.fromCharCode(64 + i)}
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="text-sm">
-                                    <span className="font-semibold text-slate-900">2,400+</span>
-                                    <span className="text-slate-500"> patients treated this year</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
