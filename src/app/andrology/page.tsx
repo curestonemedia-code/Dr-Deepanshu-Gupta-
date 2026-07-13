@@ -306,8 +306,8 @@ export default function Andrology() {
                                 <div className="text-sm text-slate-600">Book a confidential 15-minute screening call — no obligation.</div>
                             </div>
                         </div>
-                        <Link href="/?interest=infertility#book" className="w-full sm:w-auto px-8 py-3.5 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition-all duration-200 hover:shadow-lg active:scale-[0.98] whitespace-nowrap flex items-center justify-center gap-2">
-                            Book Screening
+                        <Link href="/?interest=infertility#book" className="w-full sm:w-auto px-8 py-3.5 bg-slate-900 text-white! rounded-xl font-semibold hover:bg-slate-800 transition-all duration-200 hover:shadow-lg active:scale-[0.98] whitespace-nowrap flex items-center justify-center gap-2">
+                            Book Free Screening
                             <Icons.ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
