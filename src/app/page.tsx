@@ -255,10 +255,6 @@ export default function Home() {
                             <BookingForm />
                         </Suspense>
                     </div>
-
-                    <p className="body-sm text-center mt-6 max-w-xl mx-auto">
-                        Your details are used only for scheduling this consultation. See our Privacy Policy for full terms.
-                    </p>
                 </div>
             </section>
         </>

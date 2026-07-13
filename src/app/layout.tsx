@@ -17,7 +17,7 @@ const poppins = Poppins({
 const SITE_URL = "https://drdeepanshugupta.com";
 const TITLE = "Dr. Deepanshu Gupta | Urologist & Kidney Stone Specialist";
 const DESCRIPTION =
-  "Dr. Deepanshu Gupta — MCh Urology (Rank 1, RML Hospital), MS (Gold Medalist). Specializing in fluoroscopy-free FANS-RIRS laser surgery for kidney stones, HoLEP for prostate enlargement, and andrology care at Cure Stone Hospital, Gurugram.";
+  "Dr. Deepanshu Gupta — MCh Urology (Rank 1, RML Hospital), Specializing in fluoroscopy-free FANS-RIRS laser surgery for kidney stones, HoLEP for prostate enlargement, and andrology care at Cure Stone Hospital, Gurugram.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -100,7 +100,7 @@ const physicianSchema = {
   medicalSpecialty: ["Urology", "Andrology"],
   description: DESCRIPTION,
   alumniOf: "PGIMS Rohtak, RML Hospital New Delhi",
-  hasCredential: "MBBS, MS (Gold Medalist), MCh Urology (Rank 1, RML Hospital)",
+  hasCredential: "MBBS, , MCh Urology (Rank 1, RML Hospital)",
   worksFor: {
     "@type": "MedicalBusiness",
     name: "Cure Stone Hospital",

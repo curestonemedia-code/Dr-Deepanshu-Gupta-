@@ -7,7 +7,7 @@ import ExperienceAndMemberships from "@/components/ExperienceAndMemberships";
 const SITE_URL = "https://drdeepanshugupta.com";
 const TITLE = "About Dr. Deepanshu Gupta";
 const DESCRIPTION =
-  "Credentials, work experience and professional memberships of Dr. Deepanshu Gupta — MCh Urology (Rank 1, RML Hospital), MS (Gold Medalist), Senior Consultant at Cure Stone Hospital, Gurugram.";
+  "Credentials, work experience and professional memberships of Dr. Deepanshu Gupta — MCh Urology (Rank 1, RML Hospital), , Senior Consultant at Cure Stone Hospital, Gurugram.";
 const URL = `${SITE_URL}/about`;
 
 export const metadata: Metadata = {

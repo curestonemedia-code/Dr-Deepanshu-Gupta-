@@ -12,7 +12,7 @@ export default function Footer() {
                 <img src="/logo.png" alt="Dr. Deepanshu Gupta" className="h-11 w-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
               </Link>
               <p className="mt-6 max-w-sm" style={{ color: 'var(--on-dark-muted)', fontSize: '0.9rem', lineHeight: '1.65' }}>
-                MCh Urology (Rank 1, RML Hospital) · MS (Gold Medalist) · Senior Consultant at Cure Stone Hospital, specializing in fluoroscopy-free laser urology.
+                MCh Urology (Rank 1, RML Hospital) · Senior Consultant at Cure Stone Hospital, specializing in fluoroscopy-free laser urology.
               </p>
             </div>
 

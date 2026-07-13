@@ -152,8 +152,7 @@ export default function HeroSection() {
                             { Icon: Award, text: 'MCh Urology Rank 1' },
                             { Icon: ShieldCheck, text: 'Fluoroscopy-Free Specialist' },
                             { Icon: Activity, text: '9,000+ Surgeries' },
-                            { Icon: Zap, text: 'Thulium Laser Certified' },
-                            { Icon: Medal, text: 'MS Gold Medalist' },
+                            { Icon: Zap, text: 'Advanced Laser Surgery' },
                             { Icon: HeartPulse, text: '98% Success Rate' },
                         ].map((item, i) => (
                             <span key={i} className="flex items-center gap-2 hover:text-slate-700 transition-colors">
