@@ -59,19 +59,32 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   // Landing on a page (via cross-page navigation, or a full reload) with a
   // hash already in the URL — Lenis intercepts scroll before Next.js's own
   // hash handling can act, so re-assert the scroll target once content settles.
+  // GSAP ScrollTrigger pins on the destination page insert extra pin-spacer
+  // height as images/fonts finish loading, which shifts the target's real
+  // position — so refresh ScrollTrigger and re-scroll once the page's `load`
+  // event fires too, not just on a single fixed-delay guess.
   useEffect(() => {
     if (!window.location.hash) return;
     const hash = window.location.hash.slice(1);
-    const timer = setTimeout(() => {
+
+    const scrollToHash = () => {
       const target = document.getElementById(hash);
       if (!target) return;
+      ScrollTrigger.refresh();
       if (lenisRef.current) {
         lenisRef.current.scrollTo(target, { offset: 0 });
       } else {
         target.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 350);
-    return () => clearTimeout(timer);
+    };
+
+    const timer = setTimeout(scrollToHash, 350);
+    window.addEventListener('load', scrollToHash);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('load', scrollToHash);
+    };
   }, [pathname]);
 
   return <>{children}</>;

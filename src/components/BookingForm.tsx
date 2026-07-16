@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Calendar, MessageCircle } from "lucide-react";
 import {
@@ -68,18 +68,6 @@ export default function BookingForm() {
   const [loading, setLoading] = useState(false);
   const [patientId, setPatientId] = useState<string | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
-
-  // Lenis (smooth-scroll) plus GSAP ScrollTrigger pinning elsewhere on the page
-  // can throw off the browser's native #book hash-jump on load, since both
-  // recalculate scroll height after this component mounts. Re-assert the
-  // scroll target once things settle for links like /?interest=...#book.
-  useEffect(() => {
-    if (window.location.hash !== "#book") return;
-    const timer = setTimeout(() => {
-      document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 400);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
