@@ -51,7 +51,7 @@ export default function Nav() {
           <img src="/logo.png" alt="Dr. Deepanshu Gupta" className="h-10 md:h-11 w-auto object-contain" />
         </Link>
 
-        <div className="hidden md:flex items-center gap-8 font-bold">
+        <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="nav-link">{link.label}</Link>
           ))}
@@ -78,7 +78,7 @@ export default function Nav() {
       </div>
 
       <div className={`nav-mobile-menu md:hidden ${menuOpen ? 'open' : ''}`}>
-        <div className="nav-mobile-links fonbol">
+        <div className="nav-mobile-links" style={{ fontWeight: 600! }}>
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="nav-mobile-link" onClick={() => setMenuOpen(false)}>
               {link.label}

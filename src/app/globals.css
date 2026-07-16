@@ -82,7 +82,7 @@ a { text-decoration: none; color: inherit; }
 }
 .display-sm {
     font-weight: 900; letter-spacing: -0.03em; line-height: 1.02;
-    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    font-size: clamp(2rem, 4vw, 3.25rem);
 }
 .display-xl {
     font-weight: 900; letter-spacing: -0.04em; line-height: 0.95;
@@ -226,7 +226,7 @@ body.on-dark #navbar .nav-toggle { color: #fff; }
     font-weight: 600; font-size: 0.9rem;
 }
 .nav-link {
-    font-size: 0.875rem; font-weight: 500; color: var(--ink-soft);
+    font-size: 0.875rem; font-weight: 600; color: var(--ink-soft);
     transition: color 0.6s ease;
 }
 .nav-link:hover { color: var(--brand); }

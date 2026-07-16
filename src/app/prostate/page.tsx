@@ -93,7 +93,7 @@ export default function Prostate() {
         <div className="grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8">
                 <div className="chip mb-6"><span className="chip-dot"></span>Prostate Enlargement · BPH</div>
-                <h1 className="display mb-6 split-words">Back to sleeping through the night.</h1>
+                <h1 className="display-sm mb-6 split-words">Back to sleeping through the night.</h1>
                 <p className="body-lg max-w-2xl">Holmium laser enucleation (HoLEP) is the modern gold standard for benign prostate enlargement — size-independent, catheter-free quickly, and with results that last a lifetime. No long-term TURP drawbacks, no re-treatment anxiety.</p>
             </div>
             <div className="lg:col-span-4">
