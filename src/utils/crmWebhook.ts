@@ -1,14 +1,15 @@
 const CRM_WEBHOOK_URL =
   "https://crm.thecurestone.com/api/webhook/website-leads?wh_token=a219235a3e0bca4bafac34581d23d4c3d64643b5e1e2eda329e9a7ff4670d57b";
 
-// This booking form collects name, phone and a condition/procedure interest
-// but not state or stone size, so it maps to the CRM's "get_estimate" shape
-// rather than "book_appointment" (which requires those extra fields).
 export type CrmLeadPayload = {
-  form_type: "get_estimate";
+  form_type: "book_appointment";
   name: string;
   phone: string;
+  state: string;
+  stoneSize: string;
   consultationType: string;
+  email?: string;
+  description: string;
 };
 
 export type CrmLeadResponse = {

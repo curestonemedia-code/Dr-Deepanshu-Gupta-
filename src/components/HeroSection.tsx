@@ -122,7 +122,7 @@ export default function HeroSection() {
                                     { val: '15+', label: 'Years Practice' },
                                     { val: 'Rank 1', label: 'MCh (RML)' },
                                 ].map(({ val, label, accent }) => (
-                                    <div key={label} className="relative">
+                                    <div key={label} className="relative text-center md:text-left">
                                         <div className={`text-2xl md:text-3xl font-extrabold tracking-tight ${accent ? 'text-blue-600' : 'text-slate-900'}`}>{val}</div>
                                         <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mt-1">{label}</div>
                                         {accent && <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full animate-pulse" />}
