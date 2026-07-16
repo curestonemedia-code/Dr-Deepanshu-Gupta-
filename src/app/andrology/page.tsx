@@ -126,7 +126,7 @@ export default function Andrology() {
                             </div>
 
                             {/* Headline matched to the site's display type scale */}
-                            <h1 className="display mb-8 split-words">
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-black mb-8 split-words">
                                 Answers, not assumptions. Discretion, always.
                             </h1>
 
@@ -177,9 +177,9 @@ export default function Andrology() {
                                         </div>
 
                                         <div className="body-sm text-slate-500 text-sm font-medium mb-1">{stat.label}</div>
-                                        <div className="text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight" style={{ letterSpacing: "-0.02em" }}>
+                                        <div className="text-xl lg:text-2xl font-bold text-slate-900 tracking-tight" style={{ letterSpacing: "-0.02em" }}>
                                             {stat.value}
-                                            {stat.unit && <span className={`text-2xl lg:text-3xl ${stat.color} ml-0.5`}>{stat.unit}</span>}
+                                            {stat.unit && <span className={`text-xl lg:text-2xl ${stat.color} ml-0.5`}>{stat.unit}</span>}
                                         </div>
                                     </div>
                                 ))}
