@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -186,6 +187,7 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
       </body>
+      <GoogleAnalytics gaId="G-4V3TRJ2RE7" />
       <Script id="microsoft-clarity" strategy="afterInteractive">
         {`(function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
