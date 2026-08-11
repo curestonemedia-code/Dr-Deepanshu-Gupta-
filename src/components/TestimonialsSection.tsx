@@ -122,30 +122,53 @@ export default function TestimonialsSection() {
             img: '',
             name: 'Mr. Devendra Thakur',
             cond: '22mm Stone · Shimla',
-            quote: 'After 4 failed surgeries elsewhere, I finally found relief. The laser procedure was painless and I was home in 24 hours.'
+            quote: 'After 4 failed surgeries elsewhere, I finally found relief. The laser procedure was painless and I was home in 24 hours.',
+            uploadDate: '2026-01-06T06:30:27-08:00', duration: 'PT2M49S',
         },
         {
             vid: '4xDV33Zgba4',
             img: '',
             name: 'Anwar Hussain, 27',
             cond: 'Staghorn Stone · Assam',
-            quote: 'I travelled 2000 km for this treatment. The thulium laser dusting technology saved me from open surgery.'
+            quote: 'I travelled 2000 km for this treatment. The thulium laser dusting technology saved me from open surgery.',
+            uploadDate: '2026-02-10T06:30:09-08:00', duration: 'PT10M1S',
         },
         {
             vid: 'r6gHddV_OpM',
             img: '',
             name: '25mm का kidney stone ख़तम',
             cond: 'Kidney Stone · Delhi',
-            quote: 'I was scared of open surgery. The laser procedure was quick, painless, and I was back to work in 2 days.'
+            quote: 'I was scared of open surgery. The laser procedure was quick, painless, and I was back to work in 2 days.',
+            uploadDate: '2025-07-01T05:30:05-07:00', duration: 'PT1M18S',
         },
         {
             vid: 'ZIIGg4vRM5c',
             img: '',
             name: 'Odisha से आकर निकलवाया Kidney Stone',
             cond: 'Kidney Stone · Odisha',
-            quote: 'I had been trying to conceive for 3 years. After the laser treatment, my sperm count improved significantly.'
+            quote: 'I had been trying to conceive for 3 years. After the laser treatment, my sperm count improved significantly.',
+            uploadDate: '2025-08-05T06:45:04-07:00', duration: 'PT1M26S',
         },
     ];
+
+    // uploadDate is required by Google's video rich-result guidelines —
+    // dates/durations pulled from each video's own YouTube watch page metadata.
+    const videoSchemas = testimonials.map(({ vid, name, quote, uploadDate, duration }) => ({
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        name,
+        description: quote,
+        thumbnailUrl: [`https://img.youtube.com/vi/${vid}/hqdefault.jpg`],
+        uploadDate,
+        duration,
+        embedUrl: `https://www.youtube.com/embed/${vid}`,
+        contentUrl: `https://www.youtube.com/watch?v=${vid}`,
+        publisher: {
+            "@type": "Physician",
+            "@id": "https://drdeepanshugupta.com/#physician",
+            name: "Dr. Deepanshu Gupta",
+        },
+    }));
 
     const scroll = (direction: 'left' | 'right') => {
         if (!scrollRef.current) return;
@@ -158,6 +181,14 @@ export default function TestimonialsSection() {
     return (
         <>
             <section id="testimonials" className="py-11 md:py-15 bg-white relative overflow-hidden" data-bg="#ffffff" data-theme="light">
+                {videoSchemas.map((schema, i) => (
+                    <script
+                        key={testimonials[i].vid}
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
+                    />
+                ))}
+
                 {/* Background Decoration */}
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-40 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-50 rounded-full blur-3xl opacity-60 translate-y-1/2 -translate-x-1/3 pointer-events-none" />

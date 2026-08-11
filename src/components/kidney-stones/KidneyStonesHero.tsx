@@ -3,9 +3,32 @@ import React from 'react';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 
+// uploadDate is required by Google's video rich-result guidelines — date and
+// duration pulled from the video's own YouTube watch page metadata.
+const videoSchema = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: "Bilateral Kidney Stones — How Are They Removed?",
+  description: "Dr. Deepanshu Gupta explains treatment for bilateral (both-kidney) kidney stones and how they are removed with laser surgery.",
+  thumbnailUrl: ["https://img.youtube.com/vi/J4Twv-dMfR4/hqdefault.jpg"],
+  uploadDate: "2023-09-16T04:30:07-07:00",
+  duration: "PT4M41S",
+  embedUrl: "https://www.youtube.com/embed/J4Twv-dMfR4",
+  contentUrl: "https://www.youtube.com/watch?v=J4Twv-dMfR4",
+  publisher: {
+    "@type": "Physician",
+    "@id": "https://drdeepanshugupta.com/#physician",
+    name: "Dr. Deepanshu Gupta",
+  },
+};
+
 export default function KidneyStonesHero() {
   return (
     <section className="cond-hero edge" data-bg="#ffffff" data-theme="light">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema).replace(/</g, "\\u003c") }}
+        />
         <div className="cond-hero-bg"></div>
         <div className="container-x relative">
             <div className="cond-breadcrumb">

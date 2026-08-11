@@ -19,27 +19,35 @@ export default function LiveOTSection() {
             title: '22mm Stone Clearance',
             desc: 'Patient travelled from Shimla after 4 failed surgeries. Successfully treated using FANS-RIRS laser technology with a 24-hour discharge.',
             stats: [{ v: '24h', l: 'Discharge' }, { v: '0', l: 'Incisions' }, { v: 'Stone-Free', l: 'Outcome', accent: true }],
+            uploadDate: '2026-01-06T06:30:27-08:00', duration: 'PT2M49S',
         },
         {
             vid: '4xDV33Zgba4', label: 'Case 02 · Assam',
             title: 'Thulium Laser Dusting',
             desc: 'Live OT footage demonstrating the pulverisation of a 21mm kidney stone causing PUJ blockage, performed on a patient from Assam.',
             stats: [{ v: '21mm', l: 'Stone Size' }, { v: 'PUJ', l: 'Blockage' }, { v: 'Laser', l: 'Thulium', accent: true }],
+            uploadDate: '2026-02-10T06:30:09-08:00', duration: 'PT10M1S',
         },
         {
             vid: 'K5va1bE282M', label: 'Case 03 · Protocol',
             title: 'The FANS-RIRS Guide',
             desc: 'Dr. Gupta breaks down the exact mechanics of the surgery, explaining how modern laser protocols avoid the incisions and radiation exposure of traditional open surgery.',
             stats: [{ v: 'FANS', l: 'Technique' }, { v: 'Modern', l: 'Protocol' }, { v: 'Zero', l: 'Cuts', accent: true }],
+            uploadDate: '2024-06-08T09:01:46-07:00', duration: 'PT20M21S',
         },
     ];
 
-    const videoSchemas = cases.map(({ vid, title, desc }) => ({
+    // uploadDate is required by Google's video rich-result guidelines
+    // (https://developers.google.com/search/docs/appearance/structured-data/video)
+    // — dates/durations pulled from each video's own YouTube watch page metadata.
+    const videoSchemas = cases.map(({ vid, title, desc, uploadDate, duration }) => ({
         "@context": "https://schema.org",
         "@type": "VideoObject",
         name: title,
         description: desc,
-        thumbnailUrl: `https://i.ytimg.com/vi/${vid}/hqdefault.jpg`,
+        thumbnailUrl: [`https://i.ytimg.com/vi/${vid}/hqdefault.jpg`],
+        uploadDate,
+        duration,
         embedUrl: `https://www.youtube.com/embed/${vid}`,
         contentUrl: `https://www.youtube.com/watch?v=${vid}`,
         publisher: {
