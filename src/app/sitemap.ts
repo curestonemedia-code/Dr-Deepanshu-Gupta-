@@ -1,6 +1,31 @@
 import type { MetadataRoute } from "next";
+import { sanityFetch } from "@/lib/sanity";
 
 const SITE_URL = "https://drdeepanshugupta.com";
+
+type BlogSlugEntry = {
+  slug: string;
+  publishedAt?: string;
+  updatedAt?: string;
+};
+
+// Only this site's posts — the Sanity dataset is shared with
+// thecurestone.com, so an unscoped query would list Cure Stone's articles
+// under this domain too. Failures degrade to an empty list rather than
+// taking the whole sitemap down.
+async function getBlogSlugs(): Promise<BlogSlugEntry[]> {
+  try {
+    return await sanityFetch<BlogSlugEntry[]>({
+      query: `*[_type == "blogPost" && siteId == "dr-deepanshu" && defined(slug.current) && isPublished != false]{
+        "slug": slug.current,
+        publishedAt,
+        updatedAt
+      }`,
+    });
+  } catch {
+    return [];
+  }
+}
 
 // Next.js's built-in sitemap.xml serializer interpolates video title/
 // description fields directly into the XML with no escaping of its own, so a
@@ -28,6 +53,7 @@ const ROUTES: Array<{
   { path: "/patients", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.6 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
 ];
 
 // Real, distinct videos from the Cure Stone YouTube channel, keyed by the
@@ -85,12 +111,15 @@ const VIDEOS_BY_PATH: Record<string, MetadataRoute.Sitemap[number]["videos"]> = 
   ],
 };
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map((route) => {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const now = new Date();
+  const posts = await getBlogSlugs();
+
+  const staticRoutes: MetadataRoute.Sitemap = ROUTES.map((route) => {
     const videos = VIDEOS_BY_PATH[route.path];
     return {
       url: `${SITE_URL}${route.path}`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
       ...(videos
@@ -104,4 +133,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         : {}),
     };
   });
+
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: post.updatedAt ? new Date(post.updatedAt) : post.publishedAt ? new Date(post.publishedAt) : now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...blogRoutes];
 }

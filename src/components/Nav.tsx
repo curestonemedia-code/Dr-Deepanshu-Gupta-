@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: '/#conditions', label: 'Conditions' },
   { href: '/about', label: 'About' },
   { href: '/patients', label: 'Patients' },
+  { href: '/blog', label: 'Blog' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ];
