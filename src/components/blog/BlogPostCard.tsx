@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { ArrowRight, CalendarDays, Clock3 } from "lucide-react";
 import SanityImage from "@/components/blog/SanityImage";
-import { formatDate, getReadTime, type BlogCard } from "@/lib/blogs";
+import { formatDate, getPostCategorySlug, getReadTime, type BlogCard } from "@/lib/blogs";
 
 export default function BlogPostCard({ post }: { post: BlogCard }) {
   const category = post.categories?.[0];
 
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`/${getPostCategorySlug(post)}/${post.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-500/5"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">

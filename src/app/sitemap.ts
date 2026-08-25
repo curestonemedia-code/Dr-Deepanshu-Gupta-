@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { sanityFetch } from "@/lib/sanity";
+import { UNCATEGORIZED_SLUG } from "@/lib/blogs";
 
 const SITE_URL = "https://drdeepanshugupta.com";
 
@@ -7,6 +8,7 @@ type BlogSlugEntry = {
   slug: string;
   publishedAt?: string;
   updatedAt?: string;
+  categorySlug?: string | null;
 };
 
 // Only this site's posts — the Sanity dataset is shared with
@@ -19,7 +21,8 @@ async function getBlogSlugs(): Promise<BlogSlugEntry[]> {
       query: `*[_type == "blogPost" && siteId == "dr-deepanshu" && defined(slug.current) && isPublished != false]{
         "slug": slug.current,
         publishedAt,
-        updatedAt
+        updatedAt,
+        "categorySlug": categories[0]->slug.current
       }`,
     });
   } catch {
@@ -135,7 +138,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}`,
+    url: `${SITE_URL}/${post.categorySlug || UNCATEGORIZED_SLUG}/${post.slug}`,
     lastModified: post.updatedAt ? new Date(post.updatedAt) : post.publishedAt ? new Date(post.publishedAt) : now,
     changeFrequency: "monthly",
     priority: 0.7,
