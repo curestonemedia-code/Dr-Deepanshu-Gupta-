@@ -56,6 +56,25 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     };
   }, []);
 
+  // Lenis caches the page's scrollable height when it measures. A same-app
+  // client-side navigation (e.g. /blog -> a much taller blog post) swaps in
+  // new content without a reload, and Lenis's own auto-resize doesn't
+  // reliably keep up — you can only scroll as far as the *previous* page's
+  // height, as if the new content below that point doesn't exist, until a
+  // full refresh re-measures from scratch. Force a recalculation on every
+  // route change, and again shortly after in case images are still loading
+  // in and changing the page's final height.
+  useEffect(() => {
+    const resize = () => lenisRef.current?.resize();
+    resize();
+    const timer = setTimeout(resize, 350);
+    window.addEventListener('load', resize);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('load', resize);
+    };
+  }, [pathname]);
+
   // Landing on a page (via cross-page navigation, or a full reload) with a
   // hash already in the URL — Lenis intercepts scroll before Next.js's own
   // hash handling can act, so re-assert the scroll target once content settles.
