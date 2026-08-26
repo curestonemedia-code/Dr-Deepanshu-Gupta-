@@ -59,60 +59,16 @@ const ROUTES: Array<{
   { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
 ];
 
-// Real, distinct videos from the Cure Stone YouTube channel, keyed by the
-// page they're embedded on — surfaces them to Google via a video sitemap
-// (https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps).
-const HOME_AND_PATIENTS_VIDEOS: NonNullable<MetadataRoute.Sitemap[number]["videos"]> = [
-  {
-    title: "22mm Stone Clearance — Patient Case, Shimla",
-    thumbnail_loc: "https://i.ytimg.com/vi/TTaSMfmViUk/hqdefault.jpg",
-    description: "Patient travelled from Shimla after 4 failed surgeries. Successfully treated using FANS-RIRS laser technology with a 24-hour discharge.",
-    player_loc: "https://www.youtube.com/embed/TTaSMfmViUk",
-    family_friendly: "yes",
-  },
-  {
-    title: "Thulium Laser Dusting — Live OT, Assam",
-    thumbnail_loc: "https://i.ytimg.com/vi/4xDV33Zgba4/hqdefault.jpg",
-    description: "Live OT footage demonstrating the pulverisation of a 21mm kidney stone causing PUJ blockage, performed on a patient from Assam.",
-    player_loc: "https://www.youtube.com/embed/4xDV33Zgba4",
-    family_friendly: "yes",
-  },
-  {
-    title: "The FANS-RIRS Guide",
-    thumbnail_loc: "https://i.ytimg.com/vi/K5va1bE282M/hqdefault.jpg",
-    description: "Dr. Gupta breaks down the exact mechanics of FANS-RIRS laser surgery for kidney stones.",
-    player_loc: "https://www.youtube.com/embed/K5va1bE282M",
-    family_friendly: "yes",
-  },
-  {
-    title: "25mm Kidney Stone Gone — RIRS Treatment",
-    thumbnail_loc: "https://img.youtube.com/vi/r6gHddV_OpM/hqdefault.jpg",
-    description: "Patient testimonial after RIRS laser treatment for a 25mm kidney stone.",
-    player_loc: "https://www.youtube.com/embed/r6gHddV_OpM",
-    family_friendly: "yes",
-  },
-  {
-    title: "Kidney Stone Surgery Experience — Odisha",
-    thumbnail_loc: "https://img.youtube.com/vi/ZIIGg4vRM5c/hqdefault.jpg",
-    description: "Patient testimonial after travelling from Odisha for kidney stone surgery.",
-    player_loc: "https://www.youtube.com/embed/ZIIGg4vRM5c",
-    family_friendly: "yes",
-  },
-];
-
-const VIDEOS_BY_PATH: Record<string, MetadataRoute.Sitemap[number]["videos"]> = {
-  "/": HOME_AND_PATIENTS_VIDEOS,
-  "/patients": HOME_AND_PATIENTS_VIDEOS,
-  "/kidney-stones": [
-    {
-      title: "Bilateral Kidney Stones — How Are They Removed?",
-      thumbnail_loc: "https://img.youtube.com/vi/J4Twv-dMfR4/hqdefault.jpg",
-      description: "Dr. Deepanshu Gupta explains treatment for bilateral (both-kidney) kidney stones and how they are removed with laser surgery.",
-      player_loc: "https://www.youtube.com/embed/J4Twv-dMfR4",
-      family_friendly: "yes",
-    },
-  ],
-};
+// None of the pages below are "watch pages" for their embedded videos — each
+// clip is one card in a testimonial carousel or a hero-side element next to
+// the page's real subject, not the page's primary content. A video sitemap
+// entry asserts the opposite, and Search Console's Videos report correctly
+// flags that as "Video isn't on a watch page" (confirmed on / and /patients,
+// which also shared the exact same videos, and /kidney-stones). So: no
+// VIDEOS_BY_PATH map — the embeds stay, only the video-sitemap/structured-data
+// claim of page ownership is gone. Re-add an entry only for a page genuinely
+// dedicated to one specific video.
+const VIDEOS_BY_PATH: Record<string, MetadataRoute.Sitemap[number]["videos"]> = {};
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();

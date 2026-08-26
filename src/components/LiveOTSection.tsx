@@ -37,35 +37,13 @@ export default function LiveOTSection() {
         },
     ];
 
-    // uploadDate is required by Google's video rich-result guidelines
-    // (https://developers.google.com/search/docs/appearance/structured-data/video)
-    // — dates/durations pulled from each video's own YouTube watch page metadata.
-    const videoSchemas = cases.map(({ vid, title, desc, uploadDate, duration }) => ({
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        name: title,
-        description: desc,
-        thumbnailUrl: [`https://i.ytimg.com/vi/${vid}/hqdefault.jpg`],
-        uploadDate,
-        duration,
-        embedUrl: `https://www.youtube.com/embed/${vid}`,
-        contentUrl: `https://www.youtube.com/watch?v=${vid}`,
-        publisher: {
-            "@type": "Physician",
-            "@id": "https://drdeepanshugupta.com/#physician",
-            name: "Dr. Deepanshu Gupta",
-        },
-    }));
-
     return (
         <section id="cases" className="py-12 md:py-20 relative bg-slate-50" data-bg="#f8fafc" data-theme="light">
-            {videoSchemas.map((schema, i) => (
-                <script
-                    key={cases[i].vid}
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
-                />
-            ))}
+            {/* No VideoObject schema here: this section renders on both / and
+                /patients, and each clip is one card in a carousel, not a
+                page's primary content — Search Console flags that combination
+                as "Video isn't on a watch page." The videos still play; they
+                just aren't declared as this page's structured-data subject. */}
 
             {/* Header */}
             <div className="container-x edge mb-8 md:mb-12">

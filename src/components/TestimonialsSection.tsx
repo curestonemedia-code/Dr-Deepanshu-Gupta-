@@ -151,25 +151,6 @@ export default function TestimonialsSection() {
         },
     ];
 
-    // uploadDate is required by Google's video rich-result guidelines —
-    // dates/durations pulled from each video's own YouTube watch page metadata.
-    const videoSchemas = testimonials.map(({ vid, name, quote, uploadDate, duration }) => ({
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        name,
-        description: quote,
-        thumbnailUrl: [`https://img.youtube.com/vi/${vid}/hqdefault.jpg`],
-        uploadDate,
-        duration,
-        embedUrl: `https://www.youtube.com/embed/${vid}`,
-        contentUrl: `https://www.youtube.com/watch?v=${vid}`,
-        publisher: {
-            "@type": "Physician",
-            "@id": "https://drdeepanshugupta.com/#physician",
-            name: "Dr. Deepanshu Gupta",
-        },
-    }));
-
     const scroll = (direction: 'left' | 'right') => {
         if (!scrollRef.current) return;
         scrollRef.current.scrollBy({
@@ -181,13 +162,11 @@ export default function TestimonialsSection() {
     return (
         <>
             <section id="testimonials" className="py-11 md:py-15 bg-white relative overflow-hidden" data-bg="#ffffff" data-theme="light">
-                {videoSchemas.map((schema, i) => (
-                    <script
-                        key={testimonials[i].vid}
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
-                    />
-                ))}
+                {/* No VideoObject schema here: this section renders on both / and
+                    /patients, and each clip is one card in a carousel, not a
+                    page's primary content — Search Console flags that combination
+                    as "Video isn't on a watch page." The videos still play; they
+                    just aren't declared as this page's structured-data subject. */}
 
                 {/* Background Decoration */}
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-40 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
