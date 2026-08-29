@@ -208,28 +208,26 @@ function renderSpans(block: PortableTextBlock) {
 function renderChild(child: PortableTextChild, block: PortableTextBlock) {
   let node: React.ReactNode = child.text || "";
 
-  child.marks?.forEach((mark) => {
-    const annotation = block.markDefs?.find((def) => def._key === mark);
+  // Find the link mark up front and apply it last, as the outermost wrapper.
+  // Building marks strictly in array order let "strong" wrap the text
+  // *inside* the link whenever Sanity happened to store that mark first —
+  // and an element's own explicit color always wins over an ancestor's, so
+  // the same link rendered blue or black-bold depending on unrelated mark
+  // ordering in the content, not on anything visible in the editor.
+  const linkKey = child.marks?.find(
+    (mark) => block.markDefs?.find((def) => def._key === mark)?._type === "link"
+  );
+  const linkAnnotation = linkKey ? block.markDefs?.find((def) => def._key === linkKey) : undefined;
 
-    if (annotation?._type === "link" && annotation.href) {
-      const isExternal = !annotation.href.startsWith("/");
-      node = (
-        <a
-          key={`${child._key}-${mark}`}
-          href={annotation.href}
-          className="font-bold text-blue-600 underline decoration-blue-300 underline-offset-4"
-          target={isExternal ? "_blank" : undefined}
-          rel={isExternal ? "noopener noreferrer" : undefined}
-        >
-          {node}
-        </a>
-      );
-      return;
-    }
+  child.marks?.forEach((mark) => {
+    if (mark === linkKey) return; // applied last, below
 
     if (mark === "strong") {
       node = (
-        <strong key={`${child._key}-${mark}`} className="font-black text-slate-900">
+        <strong
+          key={`${child._key}-${mark}`}
+          className={linkAnnotation ? "font-black" : "font-black text-slate-900"}
+        >
           {node}
         </strong>
       );
@@ -251,6 +249,21 @@ function renderChild(child: PortableTextChild, block: PortableTextBlock) {
       );
     }
   });
+
+  if (linkAnnotation?.href) {
+    const isExternal = !linkAnnotation.href.startsWith("/");
+    node = (
+      <a
+        key={`${child._key}-${linkKey}`}
+        href={linkAnnotation.href}
+        className="font-bold text-blue-600 underline decoration-blue-300 underline-offset-4"
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+      >
+        {node}
+      </a>
+    );
+  }
 
   return <span key={child._key}>{node}</span>;
 }

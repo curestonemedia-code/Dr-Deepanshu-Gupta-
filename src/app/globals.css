@@ -64,7 +64,16 @@ body {
 ::-webkit-scrollbar { width: 0; height: 0; }
 html { scrollbar-width: none; }
 
-a { text-decoration: none; color: inherit; }
+/* Tailwind v4 (@import 'tailwindcss' above) puts its own reset and utility
+   classes inside CSS cascade layers. A plain, un-layered rule like this one
+   always wins over ANY layered rule — including every Tailwind color/
+   underline utility (text-blue-600, underline, ...) — regardless of
+   selector specificity. Without @layer base here, no <a> anywhere on the
+   site can ever be colored or underlined by a Tailwind class; it silently
+   falls back to inheriting its parent's color with no underline. */
+@layer base {
+    a { text-decoration: none; color: inherit; }
+}
 
 /* ---- Scroll progress bar ---- */
 #scroll-progress {
