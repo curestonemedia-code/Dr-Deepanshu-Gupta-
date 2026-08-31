@@ -1,19 +1,11 @@
 'use client';
 import React, { useRef } from 'react';
 
-export default function LiveOTSection() {
-    const scrollRef = useRef<HTMLDivElement>(null);
-
-    const scroll = (direction: 'left' | 'right') => {
-        if (!scrollRef.current) return;
-        const scrollAmount = 760;
-        scrollRef.current.scrollBy({
-            left: direction === 'left' ? -scrollAmount : scrollAmount,
-            behavior: 'smooth',
-        });
-    };
-
-    const cases = [
+// Exported so the home page (page.tsx) can build VideoObject JSON-LD for
+// these — this carousel is a horizontally-scrolling row Googlebot won't
+// drag through, so structured data is what actually gets these indexed
+// as video content for this page.
+export const LIVE_OT_CASES = [
         {
             vid: 'TTaSMfmViUk', label: 'Case 01 · Shimla',
             title: '22mm Stone Clearance',
@@ -35,7 +27,19 @@ export default function LiveOTSection() {
             stats: [{ v: 'FANS', l: 'Technique' }, { v: 'Modern', l: 'Protocol' }, { v: 'Zero', l: 'Cuts', accent: true }],
             uploadDate: '2024-06-08T09:01:46-07:00', duration: 'PT20M21S',
         },
-    ];
+];
+
+export default function LiveOTSection() {
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    const scroll = (direction: 'left' | 'right') => {
+        if (!scrollRef.current) return;
+        const scrollAmount = 760;
+        scrollRef.current.scrollBy({
+            left: direction === 'left' ? -scrollAmount : scrollAmount,
+            behavior: 'smooth',
+        });
+    };
 
     return (
         <section id="cases" className="py-12 md:py-20 relative bg-slate-50" data-bg="#f8fafc" data-theme="light">
@@ -93,7 +97,7 @@ export default function LiveOTSection() {
                 className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none px-6 md:px-12 lg:px-20 pb-6"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-                {cases.map(({ vid, label, title, desc, stats }) => (
+                {LIVE_OT_CASES.map(({ vid, label, title, desc, stats }) => (
                     <div
                         key={vid}
                         className="w-[85vw] md:w-[640px] lg:w-[720px] xl:w-[780px] flex-shrink-0 snap-center bg-white p-6 md:p-8 rounded-[2rem] border border-slate-100 shadow-[0_4px_30px_rgba(0,0,0,0.02)]"

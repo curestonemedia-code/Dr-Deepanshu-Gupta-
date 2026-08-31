@@ -2,8 +2,8 @@
 import { useEffect, useRef, Suspense } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import LiveOTSection from '../components/LiveOTSection';
-import TestimonialsSection from '../components/TestimonialsSection';
+import LiveOTSection, { LIVE_OT_CASES } from '../components/LiveOTSection';
+import TestimonialsSection, { TESTIMONIAL_VIDEOS } from '../components/TestimonialsSection';
 import FAQSection from '../components/FAQSection';
 import HeroSection from '../components/HeroSection';
 import ConditionsSection from '../components/ConditionsSection';
@@ -13,6 +13,8 @@ import DoctorProfileSection from '../components/DoctorProfileSection';
 import ExperienceAndMemberships from '../components/ExperienceAndMemberships';
 import BookingForm from '../components/BookingForm';
 import { wrapWords } from '../utils/text';
+
+const SITE_URL = 'https://drdeepanshugupta.com';
 
 export default function Home() {
     // Guard against React Strict Mode's double-invoke of effects.
@@ -136,8 +138,48 @@ export default function Home() {
         };
     }, []);
 
+    // LIVE_OT_CASES and TESTIMONIAL_VIDEOS share two ytIds (the same OT
+    // footage appears in both the case-study carousel and the testimonial
+    // carousel) — dedupe so the graph never emits two VideoObject nodes with
+    // the same @id.
+    const homeVideos = Array.from(
+        new Map(
+            [
+                ...LIVE_OT_CASES.map((v) => ({ vid: v.vid, title: v.title, description: v.desc, duration: v.duration, uploadDate: v.uploadDate })),
+                ...TESTIMONIAL_VIDEOS.map((v) => ({ vid: v.vid, title: `${v.name} — ${v.cond}`, description: v.quote, duration: v.duration, uploadDate: v.uploadDate })),
+            ].map((v) => [v.vid, v])
+        ).values()
+    );
+
     return (
         <>
+            {/* LiveOTSection's carousel and TestimonialsSection's click-gated
+                players never got structured data — this is what actually gets
+                them indexed as video content. */}
+            {homeVideos.map((v) => (
+                <script
+                    key={v.vid}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'VideoObject',
+                            name: v.title,
+                            description: v.description,
+                            thumbnailUrl: [`https://img.youtube.com/vi/${v.vid}/maxresdefault.jpg`],
+                            uploadDate: v.uploadDate,
+                            duration: v.duration,
+                            embedUrl: `https://www.youtube.com/embed/${v.vid}`,
+                            contentUrl: `https://www.youtube.com/watch?v=${v.vid}`,
+                            publisher: {
+                                '@type': 'Physician',
+                                name: 'Dr. Deepanshu Gupta',
+                                '@id': `${SITE_URL}/#physician`,
+                            },
+                        }).replace(/</g, '\\u003c'),
+                    }}
+                />
+            ))}
             {/* ── Global style fixes injected inline ── */}
             <style>{`
                 /* FAQ toggle rotation */

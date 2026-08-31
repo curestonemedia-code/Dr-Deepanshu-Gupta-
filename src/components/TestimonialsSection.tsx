@@ -112,44 +112,49 @@ function TestimonialCard({
     );
 }
 
+// Exported so the home page (page.tsx) can build VideoObject JSON-LD for
+// these — the actual <iframe> is click-gated behind a play button (see
+// TestimonialCard above), so structured data is the only way Google
+// reliably associates these videos with the page.
+export const TESTIMONIAL_VIDEOS = [
+    {
+        vid: 'TTaSMfmViUk',
+        img: '',
+        name: 'Mr. Devendra Thakur',
+        cond: '22mm Stone · Shimla',
+        quote: 'After 4 failed surgeries elsewhere, I finally found relief. The laser procedure was painless and I was home in 24 hours.',
+        uploadDate: '2026-01-06T06:30:27-08:00', duration: 'PT2M49S',
+    },
+    {
+        vid: '4xDV33Zgba4',
+        img: '',
+        name: 'Anwar Hussain, 27',
+        cond: 'Staghorn Stone · Assam',
+        quote: 'I travelled 2000 km for this treatment. The thulium laser dusting technology saved me from open surgery.',
+        uploadDate: '2026-02-10T06:30:09-08:00', duration: 'PT10M1S',
+    },
+    {
+        vid: 'r6gHddV_OpM',
+        img: '',
+        name: '25mm का kidney stone ख़तम',
+        cond: 'Kidney Stone · Delhi',
+        quote: 'I was scared of open surgery. The laser procedure was quick, painless, and I was back to work in 2 days.',
+        uploadDate: '2025-07-01T05:30:05-07:00', duration: 'PT1M18S',
+    },
+    {
+        vid: 'ZIIGg4vRM5c',
+        img: '',
+        name: 'Odisha से आकर निकलवाया Kidney Stone',
+        cond: 'Kidney Stone · Odisha',
+        quote: 'I had been trying to conceive for 3 years. After the laser treatment, my sperm count improved significantly.',
+        uploadDate: '2025-08-05T06:45:04-07:00', duration: 'PT1M26S',
+    },
+];
+
 // ── MAIN SECTION ──
 export default function TestimonialsSection() {
     const scrollRef = useRef<HTMLDivElement>(null);
-
-    const testimonials = [
-        {
-            vid: 'TTaSMfmViUk',
-            img: '',
-            name: 'Mr. Devendra Thakur',
-            cond: '22mm Stone · Shimla',
-            quote: 'After 4 failed surgeries elsewhere, I finally found relief. The laser procedure was painless and I was home in 24 hours.',
-            uploadDate: '2026-01-06T06:30:27-08:00', duration: 'PT2M49S',
-        },
-        {
-            vid: '4xDV33Zgba4',
-            img: '',
-            name: 'Anwar Hussain, 27',
-            cond: 'Staghorn Stone · Assam',
-            quote: 'I travelled 2000 km for this treatment. The thulium laser dusting technology saved me from open surgery.',
-            uploadDate: '2026-02-10T06:30:09-08:00', duration: 'PT10M1S',
-        },
-        {
-            vid: 'r6gHddV_OpM',
-            img: '',
-            name: '25mm का kidney stone ख़तम',
-            cond: 'Kidney Stone · Delhi',
-            quote: 'I was scared of open surgery. The laser procedure was quick, painless, and I was back to work in 2 days.',
-            uploadDate: '2025-07-01T05:30:05-07:00', duration: 'PT1M18S',
-        },
-        {
-            vid: 'ZIIGg4vRM5c',
-            img: '',
-            name: 'Odisha से आकर निकलवाया Kidney Stone',
-            cond: 'Kidney Stone · Odisha',
-            quote: 'I had been trying to conceive for 3 years. After the laser treatment, my sperm count improved significantly.',
-            uploadDate: '2025-08-05T06:45:04-07:00', duration: 'PT1M26S',
-        },
-    ];
+    const testimonials = TESTIMONIAL_VIDEOS;
 
     const scroll = (direction: 'left' | 'right') => {
         if (!scrollRef.current) return;
