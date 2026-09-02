@@ -80,6 +80,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const image = post.seo?.ogImage?.asset?.url || post.coverImage?.asset?.url || `${SITE_URL}/doctor.png`;
   const authorName = post.author?.name || "Dr. Deepanshu Gupta";
 
+  // "Updated" only shows for a real, later date — not the same calendar day
+  // as publishedAt, which would just be redundant noise.
+  const hasRealUpdate = post.updatedAt && formatDate(post.updatedAt) !== formatDate(post.publishedAt);
+  const dateLine = hasRealUpdate ? (
+    <>Updated {formatDate(post.updatedAt)} · Originally published {formatDate(post.publishedAt)}</>
+  ) : (
+    formatDate(post.publishedAt)
+  );
+
   // YouTube embeds in the body carry their own uploadDate/duration in Sanity
   // (see the shared youtube.ts schema) — without VideoObject markup Google
   // has no reliable way to index them as video content.
@@ -219,7 +228,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </span>
               <span className="inline-flex items-center gap-2">
                 <CalendarDays className="h-4 w-4 text-blue-600" />
-                {formatDate(post.publishedAt)}
+                {dateLine}
               </span>
               <span className="inline-flex items-center gap-2">
                 <Clock3 className="h-4 w-4 text-blue-600" />
