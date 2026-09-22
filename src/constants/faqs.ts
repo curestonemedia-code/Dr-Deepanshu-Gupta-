@@ -15,7 +15,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
   {
     slug: "general",
     title: "General Questions",
-    relatedHref: "/?interest=other#book",
+    relatedHref: "/?interest=urology-andrology#book",
     relatedLabel: "Book a Consultation",
     items: [
       {

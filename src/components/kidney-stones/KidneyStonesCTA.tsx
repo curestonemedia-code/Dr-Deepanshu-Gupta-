@@ -16,7 +16,7 @@ export default function KidneyStonesCTA() {
                 Send your reports on WhatsApp for a same-day opinion, or book a consultation slot directly.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
-                <Link href="/?interest=kidney-stones#book" className="btn btn-white btn-lg">
+                <Link href="/?interest=kidney-stone-treatment#book" className="btn btn-white btn-lg">
                     <Calendar style={{ width: '18px', height: '18px' }} />
                     Book Free Consultation
                 </Link>

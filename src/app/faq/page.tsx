@@ -124,7 +124,7 @@ export default function FaqPage() {
             Send your reports on WhatsApp or book a free consultation.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link href="/?interest=other#book" className="btn btn-white btn-lg">
+            <Link href="/?interest=urology-andrology#book" className="btn btn-white btn-lg">
               Book Free Consultation
             </Link>
             <a

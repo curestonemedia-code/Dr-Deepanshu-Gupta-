@@ -140,7 +140,7 @@ export default function Andrology() {
 
                             {/* CTA Buttons - Added for conversion */}
                             <div className="mt-10 flex flex-wrap gap-4">
-                                <Link href="/?interest=infertility#book" className="px-8 py-4 bg-slate-900 text-white! rounded-xl font-semibold hover:bg-slate-800 transition-all duration-200 hover:shadow-lg hover:shadow-slate-900/20 active:scale-[0.98] flex items-center gap-2">
+                                <Link href="/?interest=urology-andrology#book" className="px-8 py-4 bg-slate-900 text-white! rounded-xl font-semibold hover:bg-slate-800 transition-all duration-200 hover:shadow-lg hover:shadow-slate-900/20 active:scale-[0.98] flex items-center gap-2">
                                     Book Free Consultation
                                     <Icons.ArrowRight className="w-4 h-4" />
                                 </Link>
@@ -306,7 +306,7 @@ export default function Andrology() {
                                 <div className="text-sm text-slate-600">Book a confidential 15-minute screening call — no obligation.</div>
                             </div>
                         </div>
-                        <Link href="/?interest=infertility#book" className="w-full sm:w-auto px-8 py-3.5 bg-slate-900 text-white! rounded-xl font-semibold hover:bg-slate-800 transition-all duration-200 hover:shadow-lg active:scale-[0.98] whitespace-nowrap flex items-center justify-center gap-2">
+                        <Link href="/?interest=urology-andrology#book" className="w-full sm:w-auto px-8 py-3.5 bg-slate-900 text-white! rounded-xl font-semibold hover:bg-slate-800 transition-all duration-200 hover:shadow-lg active:scale-[0.98] whitespace-nowrap flex items-center justify-center gap-2">
                             Book Free Screening
                             <Icons.ArrowRight className="w-4 h-4" />
                         </Link>
@@ -384,7 +384,7 @@ export default function Andrology() {
                                 </div>
                             </div>
                             <div className="t-cta">
-                                <Link href="/?interest=infertility#book" className="btn btn-primary">Book</Link>
+                                <Link href="/?interest=urology-andrology#book" className="btn btn-primary">Book</Link>
                             </div>
                         </div>
 
@@ -400,7 +400,7 @@ export default function Andrology() {
                                 </div>
                             </div>
                             <div className="t-cta">
-                                <Link href="/?interest=infertility#book" className="btn btn-ghost">Book</Link>
+                                <Link href="/?interest=urology-andrology#book" className="btn btn-ghost">Book</Link>
                             </div>
                         </div>
 
@@ -416,7 +416,7 @@ export default function Andrology() {
                                 </div>
                             </div>
                             <div className="t-cta">
-                                <Link href="/?interest=infertility#book" className="btn btn-ghost">Consult</Link>
+                                <Link href="/?interest=urology-andrology#book" className="btn btn-ghost">Consult</Link>
                             </div>
                         </div>
 
@@ -432,7 +432,7 @@ export default function Andrology() {
                                 </div>
                             </div>
                             <div className="t-cta">
-                                <Link href="/?interest=infertility#book" className="btn btn-ghost">Consult</Link>
+                                <Link href="/?interest=urology-andrology#book" className="btn btn-ghost">Consult</Link>
                             </div>
                         </div>
 
@@ -546,7 +546,7 @@ export default function Andrology() {
                         Send existing reports on WhatsApp for a discreet same-day opinion, or book a consultation slot.
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-4">
-                        <Link href="/?interest=infertility#book" className="btn btn-white btn-lg">
+                        <Link href="/?interest=urology-andrology#book" className="btn btn-white btn-lg">
                             <Icons.Calendar style={{ "width": "18px", "height": "18px" }} />
                             Book Free Consultation
                         </Link>

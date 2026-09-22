@@ -150,7 +150,7 @@ export default async function BlogListPage({ searchParams }: BlogListPageProps) 
                       ? "Try a different category or search term."
                       : "New articles are on the way — in the meantime, book a consultation and ask directly."}
                   </p>
-                  <Link href="/?interest=other#book" className="btn btn-primary mt-6 inline-flex">
+                  <Link href="/?interest=urology-andrology#book" className="btn btn-primary mt-6 inline-flex">
                     Book Free Consultation
                   </Link>
                 </div>
@@ -174,7 +174,7 @@ export default async function BlogListPage({ searchParams }: BlogListPageProps) 
             Reading only takes you so far. Bring your reports and get an answer specific to you.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/?interest=other#book" className="btn btn-primary btn-lg">
+            <Link href="/?interest=urology-andrology#book" className="btn btn-primary btn-lg">
               Book Free Consultation
             </Link>
             <a

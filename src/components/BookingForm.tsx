@@ -9,38 +9,20 @@ import {
   validateIndianPhone,
   validateName,
   validateOptionalDescription,
-  validateOptionalEmail,
   validateSelect,
 } from "@/utils/formValidation";
 import { sendCrmLead } from "@/utils/crmWebhook";
+import {
+  CATEGORIES,
+  CATEGORY_SLUGS,
+  STONE_SIZES,
+  STONE_SIZE_CATEGORIES,
+  SUB_TREATMENTS,
+  SUB_TREATMENT_CATEGORY,
+  SUB_TREATMENT_SLUGS,
+} from "@/constants/leadFormOptions";
 
-const CONDITIONS = [
-  { value: "kidney-stones", label: "Kidney Stones (FANS-RIRS)" },
-  { value: "prostate", label: "Prostate / BPH (HoLEP)" },
-  { value: "infertility", label: "Male Fertility & Andrology" },
-  { value: "other", label: "General Urology / Second Opinion" },
-];
-
-const INDIAN_STATES = [
-  "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar",
-  "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Goa",
-  "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka",
-  "Kerala", "Ladakh", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
-  "Mizoram", "Nagaland", "Odisha", "Puducherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
-  "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"
-];
-
-const STONE_SIZES = [
-  "Less than 5mm",
-  "5mm - 10mm",
-  "10mm - 15mm",
-  "15mm - 20mm",
-  "20mm - 30mm",
-  "Greater than 30mm",
-  "Unknown / Not Diagnosed"
-];
-
-type FormField = "fullName" | "phone" | "state" | "stoneSize" | "condition" | "email" | "description";
+type FormField = "fullName" | "phone" | "category" | "stoneSize" | "subTreatment" | "description";
 type FormErrors = Partial<Record<FormField, string>>;
 
 const baseFieldClass =
@@ -59,15 +41,26 @@ function FieldError({ message }: { message?: string }) {
   );
 }
 
+const CATEGORY_BY_SLUG = Object.fromEntries(
+  Object.entries(CATEGORY_SLUGS).map(([label, slug]) => [slug, label]),
+);
+const SUB_TREATMENT_BY_SLUG = Object.fromEntries(
+  Object.entries(SUB_TREATMENT_SLUGS).map(([label, slug]) => [slug, label]),
+);
+
 export default function BookingForm() {
   const searchParams = useSearchParams();
-  const requestedCondition = searchParams.get("interest") || "";
-  const preselectedCondition = CONDITIONS.some((c) => c.value === requestedCondition) ? requestedCondition : "";
+  const preselectedCategory = CATEGORY_BY_SLUG[searchParams.get("interest") || ""] || "";
+  const preselectedSubTreatment = SUB_TREATMENT_BY_SLUG[searchParams.get("subTreatment") || ""] || "";
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [patientId, setPatientId] = useState<string | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [category, setCategory] = useState(preselectedCategory);
+
+  const showStoneSize = STONE_SIZE_CATEGORIES.includes(category as (typeof STONE_SIZE_CATEGORIES)[number]);
+  const showSubTreatment = category === SUB_TREATMENT_CATEGORY;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -76,22 +69,24 @@ export default function BookingForm() {
     const data = {
       name: cleanText(fd.get("fullName")),
       phone,
-      state: cleanText(fd.get("state")),
+      category: cleanText(fd.get("category")),
       stoneSize: cleanText(fd.get("stoneSize")),
-      condition: cleanText(fd.get("condition")),
-      email: cleanText(fd.get("email")),
+      subTreatment: cleanText(fd.get("subTreatment")),
       description: cleanText(fd.get("description")),
     };
 
     const nextErrors: FormErrors = {
       fullName: validateName(data.name),
       phone: validateIndianPhone(phone),
-      state: validateSelect(data.state, INDIAN_STATES, "State"),
-      stoneSize: validateSelect(data.stoneSize, STONE_SIZES, "Stone size"),
-      condition: validateSelect(data.condition, CONDITIONS.map((c) => c.value), "Condition"),
-      email: validateOptionalEmail(data.email),
+      category: validateSelect(data.category, CATEGORIES as unknown as string[], "Category"),
       description: validateOptionalDescription(data.description),
     };
+    if (showStoneSize) {
+      nextErrors.stoneSize = validateSelect(data.stoneSize, STONE_SIZES, "Stone size");
+    }
+    if (showSubTreatment) {
+      nextErrors.subTreatment = validateSelect(data.subTreatment, SUB_TREATMENTS, "Sub-treatment");
+    }
     const activeErrors = Object.fromEntries(Object.entries(nextErrors).filter(([, message]) => message));
 
     if (Object.keys(activeErrors).length > 0) {
@@ -104,16 +99,21 @@ export default function BookingForm() {
     setErrors({});
     setLoading(true);
 
+    // What CRM staff see as the lead's complaint/summary text - keeps the
+    // shared webhook working with zero backend changes (it folds whatever
+    // arrives under `consultationType` into a free-text field).
+    const consultationType =
+      showSubTreatment && data.subTreatment ? `${data.category} — ${data.subTreatment}` : data.category;
+
     try {
-      const conditionLabel = CONDITIONS.find((c) => c.value === data.condition)?.label || "General Urology";
       const result = await sendCrmLead({
         form_type: "book_appointment",
         name: data.name,
         phone,
-        state: data.state,
-        stoneSize: data.stoneSize,
-        consultationType: conditionLabel,
-        email: data.email || undefined,
+        consultationType,
+        category: data.category,
+        ...(showStoneSize ? { stoneSize: data.stoneSize } : {}),
+        ...(showSubTreatment && data.subTreatment ? { subTreatment: data.subTreatment } : {}),
         description: data.description || "No description",
       });
       setPatientId(result.patient_id || null);
@@ -190,41 +190,26 @@ export default function BookingForm() {
       </div>
 
       <div>
-        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">What brings you here? *</label>
+        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Category *</label>
         <select
-          name="condition"
+          name="category"
           required
-          defaultValue={preselectedCondition}
-          aria-invalid={Boolean(errors.condition)}
-          className={getFieldClass("condition", errors, "mt-1.5 appearance-none")}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          aria-invalid={Boolean(errors.category)}
+          className={getFieldClass("category", errors, "mt-1.5 appearance-none")}
         >
-          <option value="">Select a condition</option>
-          {CONDITIONS.map((c) => (
-            <option key={c.value} value={c.value}>{c.label}</option>
+          <option value="">Select category</option>
+          {CATEGORIES.map((c) => (
+            <option key={c} value={c}>{c}</option>
           ))}
         </select>
-        <FieldError message={errors.condition} />
+        <FieldError message={errors.category} />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-5">
+      {showStoneSize && (
         <div>
-          <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">State *</label>
-          <select
-            name="state"
-            required
-            defaultValue=""
-            aria-invalid={Boolean(errors.state)}
-            className={getFieldClass("state", errors, "mt-1.5 appearance-none")}
-          >
-            <option value="">Select State</option>
-            {INDIAN_STATES.map((s) => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
-          <FieldError message={errors.state} />
-        </div>
-        <div>
-          <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Stone Size (if known) *</label>
+          <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Stone Size *</label>
           <select
             name="stoneSize"
             required
@@ -232,27 +217,33 @@ export default function BookingForm() {
             aria-invalid={Boolean(errors.stoneSize)}
             className={getFieldClass("stoneSize", errors, "mt-1.5 appearance-none")}
           >
-            <option value="">Select Range</option>
+            <option value="">Select range</option>
             {STONE_SIZES.map((sz) => (
               <option key={sz} value={sz}>{sz}</option>
             ))}
           </select>
           <FieldError message={errors.stoneSize} />
         </div>
-      </div>
+      )}
 
-      <div>
-        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Email (Optional)</label>
-        <input
-          name="email"
-          type="email"
-          maxLength={120}
-          placeholder="you@example.com"
-          aria-invalid={Boolean(errors.email)}
-          className={getFieldClass("email", errors, "mt-1.5")}
-        />
-        <FieldError message={errors.email} />
-      </div>
+      {showSubTreatment && (
+        <div>
+          <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Sub-treatment *</label>
+          <select
+            name="subTreatment"
+            required
+            defaultValue={preselectedSubTreatment}
+            aria-invalid={Boolean(errors.subTreatment)}
+            className={getFieldClass("subTreatment", errors, "mt-1.5 appearance-none")}
+          >
+            <option value="">Select sub-treatment</option>
+            {SUB_TREATMENTS.map((t) => (
+              <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+          <FieldError message={errors.subTreatment} />
+        </div>
+      )}
 
       <div>
         <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Brief Description (Optional)</label>

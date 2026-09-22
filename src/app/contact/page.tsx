@@ -199,7 +199,7 @@ export default function ContactPage() {
               </div>
 
               <Link
-                href="/?interest=other#book"
+                href="/?interest=urology-andrology#book"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#2563eb] text-white! font-black rounded-full hover:bg-blue-700 transition-all"
               >
                 Book Free Consultation

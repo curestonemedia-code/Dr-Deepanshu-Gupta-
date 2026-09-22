@@ -285,7 +285,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 (Rank 1, RML Hospital). This article is general information, not a substitute for a
                 consultation about your own reports.
               </p>
-              <Link href="/?interest=other#book" className="btn btn-primary mt-6 inline-flex">
+              <Link href="/?interest=urology-andrology#book" className="btn btn-primary mt-6 inline-flex">
                 Book Free Consultation
               </Link>
             </div>
@@ -323,7 +323,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             Reading only takes you so far. Bring your reports and get an answer specific to you.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/?interest=other#book" className="btn btn-primary btn-lg">
+            <Link href="/?interest=urology-andrology#book" className="btn btn-primary btn-lg">
               Book Free Consultation
             </Link>
             <a

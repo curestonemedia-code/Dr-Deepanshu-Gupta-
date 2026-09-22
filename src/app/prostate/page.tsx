@@ -200,7 +200,7 @@ export default function Prostate() {
                     </div>
                 </div>
                 <div className="t-cta">
-                    <Link href="/?interest=prostate#book" className="btn btn-primary">Book</Link>
+                    <Link href="/?interest=urology-andrology&subTreatment=holep#book" className="btn btn-primary">Book</Link>
                 </div>
             </div>
 
@@ -216,7 +216,7 @@ export default function Prostate() {
                     </div>
                 </div>
                 <div className="t-cta">
-                    <Link href="/?interest=prostate#book" className="btn btn-ghost">Book</Link>
+                    <Link href="/?interest=urology-andrology&subTreatment=holep#book" className="btn btn-ghost">Book</Link>
                 </div>
             </div>
 
@@ -232,7 +232,7 @@ export default function Prostate() {
                     </div>
                 </div>
                 <div className="t-cta">
-                    <Link href="/?interest=prostate#book" className="btn btn-ghost">Book</Link>
+                    <Link href="/?interest=urology-andrology&subTreatment=holep#book" className="btn btn-ghost">Book</Link>
                 </div>
             </div>
 
@@ -248,7 +248,7 @@ export default function Prostate() {
                     </div>
                 </div>
                 <div className="t-cta">
-                    <Link href="/?interest=prostate#book" className="btn btn-ghost">Consult</Link>
+                    <Link href="/?interest=urology-andrology&subTreatment=holep#book" className="btn btn-ghost">Consult</Link>
                 </div>
             </div>
 
@@ -362,7 +362,7 @@ export default function Prostate() {
             Confidential consultation. Send your reports on WhatsApp for a same-day opinion.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link href="/?interest=prostate#book" className="btn btn-white btn-lg">
+            <Link href="/?interest=urology-andrology&subTreatment=holep#book" className="btn btn-white btn-lg">
                 <Icons.Calendar  style={{"width":"18px","height":"18px"}} />
                 Book Free Consultation
             </Link>

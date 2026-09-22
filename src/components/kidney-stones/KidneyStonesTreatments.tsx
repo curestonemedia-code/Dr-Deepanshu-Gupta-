@@ -27,7 +27,7 @@ export default function KidneyStonesTreatments() {
                         </div>
                     </div>
                     <div className="t-cta">
-                        <Link href="/?interest=kidney-stones#book" className="btn btn-primary">Book</Link>
+                        <Link href="/?interest=kidney-stone-treatment#book" className="btn btn-primary">Book</Link>
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@ export default function KidneyStonesTreatments() {
                         </div>
                     </div>
                     <div className="t-cta">
-                        <Link href="/?interest=kidney-stones#book" className="btn btn-ghost">Book</Link>
+                        <Link href="/?interest=kidney-stone-treatment#book" className="btn btn-ghost">Book</Link>
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@ export default function KidneyStonesTreatments() {
                         </div>
                     </div>
                     <div className="t-cta">
-                        <Link href="/?interest=kidney-stones#book" className="btn btn-ghost">Book</Link>
+                        <Link href="/?interest=kidney-stone-treatment#book" className="btn btn-ghost">Book</Link>
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@ export default function KidneyStonesTreatments() {
                         </div>
                     </div>
                     <div className="t-cta">
-                        <Link href="/?interest=kidney-stones#book" className="btn btn-ghost">Consult</Link>
+                        <Link href="/?interest=kidney-stone-treatment#book" className="btn btn-ghost">Consult</Link>
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const quickLinks = [
-  { label: "Kidney Stones (FANS-RIRS)", href: "/?interest=kidney-stones#book" },
+  { label: "Kidney Stones (FANS-RIRS)", href: "/?interest=kidney-stone-treatment#book" },
   { label: "Prostate / BPH (HoLEP)", href: "/prostate" },
   { label: "Andrology & Male Fertility", href: "/andrology" },
   { label: "FAQs", href: "/faq" },
@@ -35,7 +35,7 @@ export default function NotFound() {
             <Home style={{ width: "16px", height: "16px" }} />
             Back to Home
           </Link>
-          <Link href="/?interest=other#book" className="btn btn-ghost btn-lg">
+          <Link href="/?interest=urology-andrology#book" className="btn btn-ghost btn-lg">
             <Calendar style={{ width: "16px", height: "16px" }} />
             Book Free Consultation
           </Link>
