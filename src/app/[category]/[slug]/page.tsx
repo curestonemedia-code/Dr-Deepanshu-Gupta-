@@ -5,6 +5,8 @@ import { ArrowRight, CalendarDays, ChevronRight, Clock3, MessageCircle, UserRoun
 import PortableTextRenderer, { getYouTubeId } from "@/components/blog/PortableTextRenderer";
 import SanityImage from "@/components/blog/SanityImage";
 import BlogPostCard from "@/components/blog/BlogPostCard";
+import BlogPostAside from "@/components/blog/BlogPostAside";
+import BlogEngagement from "@/components/blog/BlogEngagement";
 import {
   formatDate,
   getBlogPost,
@@ -196,10 +198,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       ))}
 
       {/* HEADER */}
-      <section className="cond-hero edge" data-bg="#f8fafc" data-theme="light">
-        <div className="cond-hero-bg"></div>
-        <div className="container-x relative">
-          <div className="mx-auto max-w-3xl">
+      {/* One section holds header, cover and body so the sidebar can stay
+          sticky beside the whole article. overflow:clip (not hidden) keeps
+          the hero glow contained without breaking position:sticky. */}
+      <section
+        className="cond-hero edge"
+        data-bg="#f8fafc"
+        data-theme="light"
+        style={{ overflow: "clip", paddingBottom: "3rem" }}
+      >
+        <div className="cond-hero-bg" style={{ bottom: "auto", height: "32rem" }}></div>
+        <div className="container-x relative lg:grid lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_24rem]">
+          <div className="min-w-0">
+          <div className="max-w-3xl">
             <div className="cond-breadcrumb">
               <Link href="/">Home</Link>
               <ChevronRight style={{ width: "14px", height: "14px" }} />
@@ -235,14 +246,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {getReadTime(post)}
               </span>
             </div>
+
+            <div className="mt-5 grid grid-cols-2 gap-3 lg:hidden">
+              <a
+                href="tel:+918800263884"
+                className="flex items-center justify-center gap-2 rounded-xl border-2 border-blue-600 py-3.5 text-sm font-black text-blue-600"
+              >
+                Call Us
+              </a>
+              <a
+                href="#blog-enquiry"
+                className="flex items-center justify-center rounded-xl bg-blue-600 py-3.5 text-sm font-black text-white shadow-lg shadow-blue-600/20"
+              >
+                Book Free Consult
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
 
       {/* COVER IMAGE — no fixed ratio; capped height, never cropped. */}
       {post.coverImage?.asset?.url && (
-        <div className="container-x mt-10">
-          <div className="flex justify-center">
+        <div className="mt-10">
+          <div className="flex justify-start">
             <SanityImage
               image={post.coverImage}
               alt={post.title}
@@ -257,9 +281,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       )}
 
       {/* BODY */}
-      <section className="py-12 md:py-16 edge">
-        <div className="container-x">
-          <div className="mx-auto max-w-3xl">
+      <div className="py-10 lg:py-12">
+          <div className="max-w-3xl">
             <PortableTextRenderer value={post.body} />
 
             {post.tags?.length ? (
@@ -290,6 +313,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </Link>
             </div>
           </div>
+      </div>
+          </div>
+          <BlogPostAside postTitle={post.title} />
         </div>
       </section>
 
@@ -337,6 +363,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </div>
       </section>
+
+      <BlogEngagement postTitle={post.title} />
     </>
   );
 }

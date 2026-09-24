@@ -1,7 +1,7 @@
 const CRM_WEBHOOK_URL =
   "https://crm.thecurestone.com/api/webhook/website-leads?wh_token=a219235a3e0bca4bafac34581d23d4c3d64643b5e1e2eda329e9a7ff4670d57b";
 
-export type CrmLeadPayload = {
+type BookAppointmentLead = {
   form_type: "book_appointment";
   name: string;
   phone: string;
@@ -11,6 +11,15 @@ export type CrmLeadPayload = {
   subTreatment?: string;
   description?: string;
 };
+
+type GetEstimateLead = {
+  form_type: "get_estimate";
+  name: string;
+  phone: string;
+  consultationType: string;
+};
+
+export type CrmLeadPayload = BookAppointmentLead | GetEstimateLead;
 
 export type CrmLeadResponse = {
   status: string;
