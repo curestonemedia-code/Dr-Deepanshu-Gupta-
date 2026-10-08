@@ -199,15 +199,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* HEADER */}
       {/* One section holds header, cover and body so the sidebar can stay
-          sticky beside the whole article. overflow:clip (not hidden) keeps
-          the hero glow contained without breaking position:sticky. */}
+          sticky beside the whole article. position:sticky is constrained by
+          ANY non-visible overflow on an ancestor, including clip - not just
+          hidden - so this section stays overflow:visible and the hero glow
+          clips itself instead (it's a sibling of the sticky aside, not an
+          ancestor, so self-clipping it doesn't affect stickiness). */}
       <section
         className="cond-hero edge"
         data-bg="#f8fafc"
         data-theme="light"
-        style={{ overflow: "clip", paddingBottom: "3rem" }}
+        style={{ overflow: "visible", paddingBottom: "3rem" }}
       >
-        <div className="cond-hero-bg" style={{ bottom: "auto", height: "32rem" }}></div>
+        <div className="cond-hero-bg" style={{ bottom: "auto", height: "32rem", overflow: "hidden" }}></div>
         <div className="container-x relative lg:grid lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_24rem]">
           <div className="min-w-0">
           <div className="max-w-3xl">

@@ -56,7 +56,15 @@ body {
     font-family: var(--font-poppins), 'Poppins', system-ui, sans-serif;
     background: var(--bg-white);
     color: var(--ink);
-    overflow-x: hidden;
+    /* Not overflow-x:hidden here too: html already clips horizontal overflow
+       for the viewport, and setting it here as well turns body itself into a
+       second, separate scroll container (overflow-x non-visible forces
+       overflow-y to a non-visible "auto" too, per the CSS overflow spec).
+       That container, not the viewport, then becomes the nearest scrolling
+       ancestor for any position:sticky element on the page - and since
+       nothing actually scrolls body's own box (the html/viewport scrolls
+       instead), the sticky offset is computed against a scroll position
+       that never changes, so the element never visibly sticks. */
     font-weight: 500;
     margin: 0;
     transition: background-color 0.6s ease, color 0.6s ease;
