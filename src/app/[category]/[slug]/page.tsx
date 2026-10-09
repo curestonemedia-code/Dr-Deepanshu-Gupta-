@@ -261,7 +261,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 href="#blog-enquiry"
                 className="flex items-center justify-center rounded-xl bg-blue-600 py-3.5 text-sm font-black text-white shadow-lg shadow-blue-600/20"
               >
-                Book Free Consult
+                Book Consult
               </a>
             </div>
           </div>
@@ -312,7 +312,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 consultation about your own reports.
               </p>
               <Link href="/?interest=urology-andrology#book" className="btn btn-primary mt-6 inline-flex">
-                Book Free Consultation
+                Book Consultation
               </Link>
             </div>
           </div>
@@ -353,7 +353,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/?interest=urology-andrology#book" className="btn btn-primary btn-lg">
-              Book Free Consultation
+              Book Consultation
             </Link>
             <a
               href="https://wa.me/918800263884"

@@ -268,7 +268,7 @@ export default function BookingForm() {
         ) : (
           <>
             <Calendar className="w-4 h-4" />
-            Schedule Free Consultation
+            Schedule Consultation
           </>
         )}
       </button>

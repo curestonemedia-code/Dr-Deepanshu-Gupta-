@@ -86,7 +86,7 @@ export default function BlogEngagement({ postTitle }: { postTitle: string }) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <p className="text-[10px] font-black uppercase tracking-widest text-blue-600">Free Consultation</p>
+            <p className="text-[10px] font-black uppercase tracking-widest text-blue-600">Patient Enquiry</p>
             <h2 className="mt-1 pr-8 text-2xl font-black leading-tight text-slate-900">
               Talk to Dr. Deepanshu Gupta
             </h2>

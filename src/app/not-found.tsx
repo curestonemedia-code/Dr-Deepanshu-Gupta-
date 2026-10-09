@@ -37,7 +37,7 @@ export default function NotFound() {
           </Link>
           <Link href="/?interest=urology-andrology#book" className="btn btn-ghost btn-lg">
             <Calendar style={{ width: "16px", height: "16px" }} />
-            Book Free Consultation
+            Book Consultation
           </Link>
           <a
             href="https://wa.me/918800263884"
