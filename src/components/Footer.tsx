@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { MessageCircle } from 'lucide-react';
+import { DOCTOR_REGISTRATION_DISPLAY } from '@/constants/business';
 
 export default function Footer() {
   return (
@@ -53,7 +54,7 @@ export default function Footer() {
           </div>
           
           <div className="pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4" style={{ color: 'var(--on-dark-muted)', fontSize: '0.8rem' }}>
-            <div>© 2026 Dr. Deepanshu Gupta · Cure Stone Hospital. All rights reserved.</div>
+            <div>© 2026 Dr. Deepanshu Gupta · Cure Stone Hospital. All rights reserved. · MCh Urology — {DOCTOR_REGISTRATION_DISPLAY}</div>
             <div>Designed with ♥ by Gulshan Chawla</div>
           </div>
         </div>

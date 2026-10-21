@@ -108,6 +108,11 @@ const physicianSchema = {
   description: DESCRIPTION,
   alumniOf: "PGIMS Rohtak, RML Hospital New Delhi",
   hasCredential: "MBBS, , MCh Urology (Rank 1, RML Hospital)",
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "Delhi Medical Council Registration Number",
+    value: "70308",
+  },
   worksFor: {
     "@type": "MedicalBusiness",
     name: "Cure Stone Hospital",

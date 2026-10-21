@@ -7,6 +7,7 @@ import SanityImage from "@/components/blog/SanityImage";
 import BlogPostCard from "@/components/blog/BlogPostCard";
 import BlogPostAside from "@/components/blog/BlogPostAside";
 import BlogEngagement from "@/components/blog/BlogEngagement";
+import { DOCTOR_REGISTRATION_DISPLAY } from "@/constants/business";
 import {
   formatDate,
   getBlogPost,
@@ -308,8 +309,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </p>
               <p className="text-slate-600 leading-relaxed">
                 Reviewed by <strong className="text-slate-900">Dr. Deepanshu Gupta</strong> — MBBS, MCh Urology
-                (Rank 1, RML Hospital). This article is general information, not a substitute for a
-                consultation about your own reports.
+                (Rank 1, RML Hospital), {DOCTOR_REGISTRATION_DISPLAY}. This article is general information,
+                not a substitute for a consultation about your own reports.
               </p>
               <Link href="/?interest=urology-andrology#book" className="btn btn-primary mt-6 inline-flex">
                 Book Consultation

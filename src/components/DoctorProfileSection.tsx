@@ -4,6 +4,7 @@ import { Award, GraduationCap, ShieldCheck, Star, Users, BookOpen, Trophy, Histo
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import { DOCTOR_REGISTRATION_DISPLAY } from '@/constants/business';
 
 export default function DoctorProfileSection() {
     useEffect(() => {
@@ -116,6 +117,9 @@ export default function DoctorProfileSection() {
                                     </p>
                                     <p className="text-slate-300 text-xs font-medium leading-relaxed">
                                         MBBS · MS (PGIMS) · MCh Urology (Rank 1)
+                                    </p>
+                                    <p className="text-slate-400 text-[11px] font-medium leading-relaxed">
+                                        {DOCTOR_REGISTRATION_DISPLAY}
                                     </p>
                                 </div>
                             </div>
