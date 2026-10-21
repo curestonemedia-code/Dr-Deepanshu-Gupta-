@@ -24,7 +24,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: 'What does "fluoroscopy-free" actually mean, and why should I care?',
-        a: "Most stone surgeries worldwide still use real-time X-ray (fluoroscopy) to guide instruments. That means repeated radiation exposure for you, the surgeon, and OT staff. Dr. Gupta's protocol uses high-resolution ultrasound and direct endoscopic vision instead, delivering zero radiation with equal or better precision. Particularly important for young patients, women of reproductive age, and anyone who may need repeat procedures.",
+        a: "Most stone surgeries worldwide still use real-time X-ray (fluoroscopy) to guide instruments. That means repeated radiation exposure for you, the surgeon, and OT staff. Dr. Deepanshu Gupta's protocol uses high-resolution ultrasound and direct endoscopic vision instead, delivering zero radiation with equal or better precision. Particularly important for young patients, women of reproductive age, and anyone who may need repeat procedures.",
       },
       {
         q: "How long until I can go back to work?",

@@ -23,7 +23,7 @@ export const LIVE_OT_CASES = [
         {
             vid: 'K5va1bE282M', label: 'Case 03 · Protocol',
             title: 'The FANS-RIRS Guide',
-            desc: 'Dr. Gupta breaks down the exact mechanics of the surgery, explaining how modern laser protocols avoid the incisions and radiation exposure of traditional open surgery.',
+            desc: 'Dr. Deepanshu Gupta breaks down the exact mechanics of the surgery, explaining how modern laser protocols avoid the incisions and radiation exposure of traditional open surgery.',
             stats: [{ v: 'FANS', l: 'Technique' }, { v: 'Modern', l: 'Protocol' }, { v: 'Zero', l: 'Cuts', accent: true }],
             uploadDate: '2024-06-08T09:01:46-07:00', duration: 'PT20M21S',
         },
