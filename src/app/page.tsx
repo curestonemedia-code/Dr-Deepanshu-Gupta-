@@ -270,8 +270,14 @@ export default function Home() {
 
             {/* ── ZOOM SCENE ── */}
             <ZoomSceneSection />
-            {/* ── LIVE OT ── */}
-            <LiveOTSection />
+            {/* ── LIVE OT ──
+                #cases is CSS `position: sticky` (globals.css) and needs a
+                taller ancestor to pin against, or it sticks indefinitely and
+                the sections below (testimonials, FAQ, booking) scroll up and
+                overlap it instead of pushing it out of view. */}
+            <div id="cases-scroll-wrapper">
+                <LiveOTSection />
+            </div>
 
 
 

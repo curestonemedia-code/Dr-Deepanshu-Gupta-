@@ -68,7 +68,9 @@ export default function PatientsPage() {
         </div>
       </section>
 
-      <LiveOTSection />
+      <div id="cases-scroll-wrapper">
+        <LiveOTSection />
+      </div>
       <TestimonialsSection />
 
       <section className="pb-24 text-center px-5">
