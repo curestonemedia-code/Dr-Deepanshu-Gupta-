@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Folder, Search } from "lucide-react";
+import { ArrowRight, Folder, Search, Sparkles } from "lucide-react";
 import type { BlogTaxonomy } from "@/lib/blogs";
 
 export default function BlogSidebar({
@@ -18,6 +18,27 @@ export default function BlogSidebar({
 
   return (
     <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
+      <a
+        href="https://www.google.com/preferences/source?q=https://drdeepanshugupta.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group block rounded-[1.5rem] bg-gradient-to-br from-blue-900 via-blue-700 to-[#2563eb] p-4 shadow-xl shadow-blue-600/25 transition-transform hover:scale-[1.015]"
+      >
+        <div className="mb-2 flex items-center gap-2">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
+            <Sparkles className="h-3.5 w-3.5 text-white" />
+          </span>
+          <span className="text-[10px] font-black uppercase tracking-widest text-white/75">Google Search</span>
+        </div>
+        <h2 className="text-base font-black leading-snug text-white">Prefer Dr. Deepanshu Gupta on Google</h2>
+        <p className="mt-1 text-xs font-medium leading-relaxed text-white/80">
+          See more from drdeepanshugupta.com in your search results and AI Overviews.
+        </p>
+        <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-xs font-black text-blue-600 transition-colors group-hover:bg-blue-50">
+          Add as Preferred Source <ArrowRight className="h-3.5 w-3.5" />
+        </span>
+      </a>
+
       <form action="/blog" className="rounded-[1.5rem] border border-slate-100 bg-white p-4 shadow-sm">
         <label
           htmlFor="blog-search"
